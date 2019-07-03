@@ -1,0 +1,15 @@
+<h1>こんにちは、<%= current_user.username %>さん</h1>
+<p>ユーザー用ページです。</p>
+
+<% @friends.each do |friend| %>
+    <a href="https://twitter.com/<%= friend.screen_name %>" target="_blank"><%= friend.name %></a>
+    <p><%= friend.screen_name %></p>
+    <p><%= friend.description %></p>
+    <p><%= image_tag "#{friend.profile_image_url}" %></p>
+    <hr>
+<% end %>
+
+<% @timeline.each do |tweet| %>
+    <p><%= tweet.user.screen_name + ':' + tweet.text %></p>
+    <hr>
+<% end %>
