@@ -4,10 +4,10 @@ class ToppagesController < ApplicationController
   def index
   end
   
-  def show
-    @friends = @client.friends(current_user).take(20)
-    @timeline = @client.home_timeline.take(20)
-  end
+  # def show
+  #   @friends = @client.friends(current_user).take(20)
+  #   @timeline = @client.home_timeline.take(20)
+  # end
 
   # def post
   #   @client.update("テスＬ")

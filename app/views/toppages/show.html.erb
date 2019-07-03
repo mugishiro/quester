@@ -1,15 +1,38 @@
-<h1>こんにちは、<%= current_user.username %>さん</h1>
-<p>ユーザー用ページです。</p>
+<div class="row">
+    <div class="col-sm-6 offset-sm-3">
+        <div class="text-center"><h1>こんにちは、<%= current_user.username %>さん</h1></div>
+        
 
-<% @friends.each do |friend| %>
-    <a href="https://twitter.com/<%= friend.screen_name %>" target="_blank"><%= friend.name %></a>
-    <p><%= friend.screen_name %></p>
-    <p><%= friend.description %></p>
-    <p><%= image_tag "#{friend.profile_image_url}" %></p>
-    <hr>
-<% end %>
-
-<% @timeline.each do |tweet| %>
-    <p><%= tweet.user.screen_name + ':' + tweet.text %></p>
-    <hr>
-<% end %>
+        <div class="media p-3 my-4 border rounded">
+            <div class=" mr-2">
+                <%= link_to image_tag("#{current_user.image_url}", :size => "80x80", :class => "rounded-circle") %>
+            </div>
+            <div class="media-body">
+                <h5><%= current_user.username %></h5>
+                <p><%= current_user.description %></p>
+            </div>
+        </div>
+        
+        <div class="form">
+            <div class="text-center pb-2">
+                新しく質問を投稿します。何でも聞いてみましょう。
+            </div>
+            <div class="form-group "> 
+                <textarea rows="5" class="form-control form-control-lg" placeholder="質問を入力します。"></textarea>
+            </div>
+            <button class="btn btn-secondary btn-block p-3">質問する</button>
+        </div>
+        
+        <div class="my-post m-2">
+            <button class="btn btn-success btn-block">送った質問を見る</button>
+        </div>
+        
+        <div class="other-posts my-3">
+            <div class="text-center">
+                <h1>みんなの質問</h1>
+                <p>Twitterでフォローしているユーザーの質問です。<br>
+                回答はすべて匿名で送られるので、気楽に答えてみましょう。</p>
+            </div>
+        </div>
+    </div>
+</div>
