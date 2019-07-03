@@ -1,11 +1,32 @@
-<header>
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+<header class="mb-4">
+  <nav class="navbar navbar-expand navbar-dark">
     <% if user_signed_in? %>
-      <strong><%= link_to current_user.username, toppages_show_path %></strong>
-      <%= link_to 'プロフィール変更', edit_user_registration_path %>
-      <%= link_to 'tweet', toppages_post_path %>
-      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+      <ul class="navbar-nav w-100 nav-justified">
+          <li class="nav-item active">
+              <%= link_to toppages_show_path do%>
+                  <i class="fas fa-home fa-3x"></i>
+                  <br>マイページ</br>
+              <% end %>
+          </li>
+          <li class="nav-item">
+              <%= link_to edit_user_registration_path do %>
+                  <i class="fas fa-user-edit fa-3x"></i>
+              <% end %>
+          </li>
+          <li class="nav-item">
+              <%= link_to toppages_post_path do %>
+                  <i class="fas fa-users fa-3x"></i>
+              <% end %>
+          </li>
+          <li class="nav-item">
+              <%= link_to destroy_user_session_path, method: :delete do%>
+                  <i class="fas fa-sign-out-alt fa-3x"></i>
+              <% end %>
+          </li>
+      </ul>
+      
     <% else %>
+
       <%= link_to 'サインアップ', new_user_registration_path %>
       <%= link_to 'ログイン', new_user_session_path %>
     <% end %>
