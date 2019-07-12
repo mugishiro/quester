@@ -1,0 +1,14 @@
+<ul class="list-unstyled">
+  <% posts.each do |post| %>
+    <li class="media mb-3">
+      <div class=" mr-2">
+        <%= link_to image_tag("#{post.user.image_url}", :size => "60x60", :class => "rounded-circle") %>
+      </div>
+      <div class="media-body">
+        <h5><%= post.user.username %></h5>
+        <p><%= post.content %></p>
+      </div>
+    </li>
+  <% end %>
+  <%= paginate posts %>
+</ul>

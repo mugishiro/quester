@@ -8,6 +8,11 @@ class ToppagesController < ApplicationController
   #   @friends = @client.friends(current_user).take(20)
   #   @timeline = @client.home_timeline.take(20)
   # end
+  
+  def show
+    @post = current_user.posts.build 
+    @posts = current_user.posts.order(id: :desc).page(params[:page])
+  end
 
   # def post
   #   @client.update("テスＬ")
