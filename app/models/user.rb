@@ -27,6 +27,8 @@ class User < ApplicationRecord
      user
    end
 
+
+   
    private
 
    def self.dummy_email(auth)
