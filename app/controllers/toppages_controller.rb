@@ -21,8 +21,8 @@ class ToppagesController < ApplicationController
   private
     def set_twitter_client
       @client = Twitter::REST::Client.new do |config|
-        config.consumer_key = "PIT0rvhv3iyU9BcWDV6IBwK5R"
-        config.consumer_secret = "iTVqiEZ6np9mmmit57u91bG3mtNBrqMrkqQ5Ks6yZDn0OOFbbz"
+        config.consumer_key = ENV["CONSUMER_KEY"]
+        config.consumer_secret = ENV["CONSUMER_SECRET"]
         config.access_token = current_user.access_token
         config.access_token_secret = current_user.access_secret
       end
