@@ -1,5 +1,5 @@
 class ToppagesController < ApplicationController
-  before_action :set_twitter_client, only: [:show, :post]
+  before_action :set_twitter_client, only: [:show, :follows]
   
   def index
   end
@@ -14,10 +14,9 @@ class ToppagesController < ApplicationController
     @posts = current_user.posts.order(id: :desc).page(params[:page])
   end
 
-  # def post
-  #   @client.update("テスＬ")
-  #   redirect_to root_path
-  # end
+  def follows
+    @friends = @client.friends(current_user).take(20)
+  end
 
   private
     def set_twitter_client

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root to: 'toppages#index'
   get 'toppages/index'
   get 'toppages/show'
-  get 'toppages/post'
+  get 'toppages/follows'
   
   resources :posts, only: [:create, :destroy]
 end
