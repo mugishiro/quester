@@ -7,5 +7,6 @@
     <!-- <p><%= friend.description %></p> -->
     #プロフィール画像
     <p><%= image_tag "#{friend.image_url}" %></p>
+    <%= link_to(friend.nickname, user_path(friend.id)) %>
     <hr>
 <% end %>

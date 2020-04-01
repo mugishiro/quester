@@ -1,7 +1,8 @@
 <div class="row">
     <div class="col-sm-6 offset-sm-3">
-        <div class="text-center"><h1>こんにちは、<%= current_user.username %>さん</h1></div>
-        
+        <div class="text-center">
+          <h1>こんにちは、<%= current_user.username %>さん</h1>
+        </div>
         <div class="media p-3 my-4 border rounded">
             <div class=" mr-2">
                 <%= link_to image_tag("#{current_user.image_url}", :size => "80x80", :class => "rounded-circle") %>
@@ -11,7 +12,6 @@
                 <p><%= current_user.description %></p>
             </div>
         </div>
-
         <div class="form">
             <div class="text-center pb-2">
                 新しく質問を投稿します。何でも聞いてみましょう。
@@ -23,11 +23,10 @@
                 <%= f.submit '質問する', class: 'btn btn-secondary btn-block p-3' %>
             <% end %>
         </div>
-        
         <div class="my-post m-2">
-            <button class="btn btn-success btn-block">送った質問を見る</button>
+            <%= link_to "自分の質問を見る", user_path(current_user),
+                class: 'btn btn-success btn-block' %>
         </div>
-        
         <div class="other-posts my-3">
             <div class="text-center">
                 <h1>みんなの質問</h1>
