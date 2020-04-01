@@ -1,11 +1,11 @@
 <% @friends.each do |friend| %>
     #ユーザー名
-    <a href="https://twitter.com/<%= friend.screen_name %>" target="_blank"><%= friend.name %></a>
+    <a href="https://twitter.com/<%= friend.nickname %>" target="_blank"><%= friend.username %></a>
     #アカウント名
-    <p><%= friend.screen_name %></p>
+    <p><%= friend.username %></p>
     #プロフィール文
-    <p><%= friend.description %></p>
+    <!-- <p><%= friend.description %></p> -->
     #プロフィール画像
-    <p><%= image_tag "#{friend.profile_image_url}" %></p>
+    <p><%= image_tag "#{friend.image_url}" %></p>
     <hr>
 <% end %>

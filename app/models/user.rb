@@ -5,10 +5,9 @@ class User < ApplicationRecord
           :recoverable, :rememberable, :validatable,
           :omniauthable, omniauth_providers: [:twitter]
    has_many :posts
-   
+
    def self.find_for_oauth(auth)
      user = User.where(uid: auth.uid, provider: auth.provider).first
-
      unless user
        user = User.create(
          uid:      auth.uid,
@@ -23,12 +22,24 @@ class User < ApplicationRecord
          access_secret: auth.credentials.secret
        )
      end
-
      user
    end
 
+   def registered_following_users
+     client = set_twitter_client
+     uid_array = client.friend_ids.attrs[:ids]
+     User.where(uid: uid_array)
+   end
 
-   
+   def set_twitter_client
+     Twitter::REST::Client.new do |config|
+       config.consumer_key = ENV["CONSUMER_KEY"]
+       config.consumer_secret = ENV["CONSUMER_SECRET"]
+       config.access_token = access_token
+       config.access_token_secret = access_secret
+     end
+   end
+
    private
 
    def self.dummy_email(auth)

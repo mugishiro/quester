@@ -1,21 +1,22 @@
 class ToppagesController < ApplicationController
   before_action :set_twitter_client, only: [:show, :follows]
-  
+
   def index
   end
-  
+
   # def show
   #   @friends = @client.friends(current_user).take(20)
   #   @timeline = @client.home_timeline.take(20)
   # end
-  
+
   def show
-    @post = current_user.posts.build 
+    @post = current_user.posts.build
     @posts = current_user.posts.order(id: :desc).page(params[:page])
   end
 
   def follows
-    @friends = @client.friends(current_user).take(20)
+    @friends = current_user.registered_following_users
+    # @friends = @client.friends(current_user).take(20)
   end
 
   private
