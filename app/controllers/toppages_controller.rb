@@ -1,13 +1,6 @@
 class ToppagesController < ApplicationController
+  before_action :require_user_logged_in
   before_action :set_twitter_client, only: [:show, :follows]
-
-  def index
-  end
-
-  # def show
-  #   @friends = @client.friends(current_user).take(20)
-  #   @timeline = @client.home_timeline.take(20)
-  # end
 
   def show
     @post = current_user.posts.build
@@ -16,7 +9,6 @@ class ToppagesController < ApplicationController
 
   def follows
     @friends = current_user.registered_following_users
-    # @friends = @client.friends(current_user).take(20)
   end
 
   private

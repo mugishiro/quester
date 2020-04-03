@@ -2,9 +2,9 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def twitter
     callback_from :twitter
   end
-  
+
   def after_sign_in_path_for(resource)
-    edit_user_registration_url
+    toppages_show_path
   end
 
   private
