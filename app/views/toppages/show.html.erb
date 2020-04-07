@@ -16,7 +16,7 @@
             <div class="text-center pb-2">
                 新しく質問を投稿します。何でも聞いてみましょう。
             </div>
-            <%= form_with(model: [current_user, @post], local: true) do |f| %>
+            <%= form_with(model: [current_user, @post], local: true, url: confirm_new_user_post_path(current_user)) do |f| %>
                 <div class="form-group">
                     <%= f.text_area :content, class: 'form-control', rows: 5 %>
                 </div>

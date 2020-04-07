@@ -1,0 +1,11 @@
+<div class="form">
+    <div class="text-center pb-2">
+      こちらの内容でよろしいですか？
+    </div>
+    <%= form_with(model: [current_user, @post], local: true) do |f| %>
+        <p><%= @post.content %></p>
+        <%= f.hidden_field :content, value: @post.content %>
+        <%= f.submit '戻る', name: 'back', class: 'btn btn-primary mr-3' %>
+        <%= f.submit '登録', class: 'btn btn-secondary' %>
+    <% end %>
+</div>

@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   get 'toppages/follows'
 
   resources :users, only: [:show], param: :nickname do
-    resources :posts, only: [:show, :create, :destroy]
+    resources :posts, only: [:show, :create, :destroy] do
+      post :confirm, action: :confirm_new, on: :new
+    end
   end
   resources :replies, only: [:create, :destroy]
 end
