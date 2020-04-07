@@ -14,7 +14,7 @@
                 <h1>過去の質問</h1>
                 <p><%= @user.username %>さんの質問です</p>
             </div>
-            <%= render 'posts/posts', posts: @posts %>
+            <%= render 'posts/posts', user: @user, posts: @posts %>
         </div>
     </div>
 </div>

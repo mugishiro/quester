@@ -16,7 +16,7 @@
             <div class="text-center pb-2">
                 新しく質問を投稿します。何でも聞いてみましょう。
             </div>
-            <%= form_with(model: @post, local: true) do |f| %>
+            <%= form_with(model: [current_user, @post], local: true) do |f| %>
                 <div class="form-group">
                     <%= f.text_area :content, class: 'form-control', rows: 5 %>
                 </div>
@@ -33,7 +33,7 @@
                 <p>Twitterでフォローしているユーザーの質問です。<br>
                 回答はすべて匿名で送られるので、気楽に答えてみましょう。</p>
             </div>
-            <%= render 'posts/posts', posts: @posts %>
+            <%= render 'posts/posts', user: current_user, posts: @posts %>
         </div>
     </div>
 </div>

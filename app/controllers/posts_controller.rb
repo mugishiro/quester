@@ -3,7 +3,10 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @user = @post.user
     @reply = Reply.new
-    @replies = @post.replies
+    @replies = @post.replies if @user == current_user
+  end
+
+  def new
   end
 
   def create

@@ -1,6 +1,6 @@
 <ul class="list-unstyled">
   <% posts.each do |post| %>
-    <%= link_to post_path(post) do %>
+    <%= link_to user_post_path(user, post) do %>
       <li class="media mb-3">
         <div class=" mr-2">
           <%= image_tag("#{post.user.image_url}", :size => "60x60", :class => "rounded-circle") %>

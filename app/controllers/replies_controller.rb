@@ -1,10 +1,11 @@
 class RepliesController < ApplicationController
   def create
     @post = Post.find(reply_params[:post_id])
+    @user = @post.user
     @reply = @post.replies.build(reply_params)
     if @reply.save
       flash[:success] = '回答を投稿しました。'
-      redirect_to post_path(@post)
+      redirect_to [@user, @post]
     else
       @reply = @post.replies.order(id: :desc).page(params[:page])
       flash.now[:danger] = '回答の投稿に失敗しました。'
