@@ -32,6 +32,10 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    @user = @post.user
+    @post.destroy
+    redirect_to user_url(@user), notice: "質問を削除しました。"
   end
 
   private

@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <%= display_meta_tags(default_meta_tags) %>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Qa</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -18,7 +19,7 @@
   </head>
 
   <body>
-      <%= render 'layouts/navbar' %>
+    <%= render 'layouts/navbar' %>
     <div class="container-fluid">
       <%= render 'layouts/flash_messages' %>
       <%= yield %>

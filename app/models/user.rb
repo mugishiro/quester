@@ -4,7 +4,7 @@ class User < ApplicationRecord
    devise :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable,
           :omniauthable, omniauth_providers: [:twitter]
-   has_many :posts
+   has_many :posts, dependent: :destroy
 
    def to_param
      nickname
@@ -25,22 +25,24 @@ class User < ApplicationRecord
          access_token: auth.credentials.token,
          access_secret: auth.credentials.secret
        )
+       text = "#{user.username}(#{user.nickname})さんの質問です。\n\n#sitsumon #kaitoubosyu\nlocalhost:3000/users/#{user.nickname}"
+       User.set_twitter_client(user).update(text)
      end
      user
    end
 
    def registered_following_users
-     client = set_twitter_client
+     client = User.set_twitter_client(self)
      uid_array = client.friend_ids.attrs[:ids]
      User.where(uid: uid_array)
    end
 
-   def set_twitter_client
+   def self.set_twitter_client(user)
      Twitter::REST::Client.new do |config|
        config.consumer_key = ENV["CONSUMER_KEY"]
        config.consumer_secret = ENV["CONSUMER_SECRET"]
-       config.access_token = access_token
-       config.access_token_secret = access_secret
+       config.access_token = user.access_token
+       config.access_token_secret = user.access_secret
      end
    end
 
