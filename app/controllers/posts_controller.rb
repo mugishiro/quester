@@ -31,6 +31,14 @@ class PostsController < ApplicationController
     end
   end
 
+  def update
+    @post = Post.find(params[:id])
+    @user = @post.user
+    @post.status = !@post.status
+    @post.save
+    redirect_to user_url(@user)
+  end
+
   def destroy
     @post = Post.find(params[:id])
     @user = @post.user

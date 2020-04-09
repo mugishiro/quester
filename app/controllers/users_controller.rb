@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
   def show
     @user = User.find_by!(nickname: params[:nickname])
-    @posts = @user.posts.order(id: :desc).page(params[:page])
+    @open_posts = @user.posts.where(status: true).order(id: :desc).page(params[:page])
+    @closed_posts = @user.posts.where(status: false).order(id: :desc).page(params[:page])
+  end
+
+  def closed
+    @user = User.find_by!(nickname: params[:nickname])
+    @closed_posts = @user.posts.where(status: false).order(id: :desc).page(params[:page])
   end
 end

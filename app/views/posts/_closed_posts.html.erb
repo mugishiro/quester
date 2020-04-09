@@ -11,7 +11,7 @@
           <%= link_to '削除', [post.user, post], method: :delete, data: { confirm: "この質問を削除しますか？" },
               class: 'btn btn-danger' %>
           <%= form_with(model: [post.user, post], local: true) do |f| %>
-              <%= f.submit '締め切る', class: 'btn btn-primary btn-block p-3' %>
+              <%= f.submit '回答を受け付ける', class: 'btn btn-primary btn-block p-3' %>
           <% end %>
         </div>
       </li>

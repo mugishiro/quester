@@ -3,7 +3,7 @@ class ToppagesController < ApplicationController
 
   def show
     @post = current_user.posts.build
-    @posts = Post.order(id: :desc).page(params[:page])
+    @posts = Post.where(status: true).order(id: :desc).page(params[:page])
   end
 
   def follows

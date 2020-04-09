@@ -7,10 +7,12 @@ Rails.application.routes.draw do
   get 'toppages/follows'
 
   resources :users, only: [:show], param: :nickname do
-    resources :posts, only: [:show, :create, :destroy] do
+    resources :posts, only: [:show, :create, :update, :destroy] do
       post :confirm, action: :confirm_new, on: :new
     end
   end
+  get 'users/:nickname/closed', to: 'users#closed', as: :closed_posts
+
   resources :replies, only: [:create, :destroy] do
     post :confirm, action: :confirm_new, on: :new
   end
