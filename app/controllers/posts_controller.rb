@@ -21,6 +21,7 @@ class PostsController < ApplicationController
       render 'toppages/show'
       return
     end
+    @post.image = PostsHelper.build(@post.content).tempfile.open.read
 
     if @post.save
       flash[:success] = '質問を投稿しました。'
@@ -44,6 +45,11 @@ class PostsController < ApplicationController
     @user = @post.user
     @post.destroy
     redirect_to user_url(@user), notice: "質問を削除しました。"
+  end
+
+  def get_image
+    @image = Post.find(params[:id]).image
+    send_data(@image, :disposition => "inline", :type => "image/jpeg")
   end
 
   private

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     end
   end
   get 'users/:nickname/closed', to: 'users#closed', as: :closed_posts
+  get 'posts/get_image'
 
   resources :replies, only: [:create, :destroy] do
     post :confirm, action: :confirm_new, on: :new
