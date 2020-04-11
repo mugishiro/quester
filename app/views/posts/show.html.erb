@@ -3,6 +3,7 @@
   og: {
     title: "#{@user.username}(#{@user.nickname})",
     description: "質問です。「#{@post.content}」",
+    image: "#{request.base_url}/posts/get_image?id=#{@post.id}"
  } %>
 
 <div class="row">
