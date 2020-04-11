@@ -1,4 +1,6 @@
 class RepliesController < ApplicationController
+  before_action :reply_only_opened_posts, only: [:confirm_new, :create]
+
   def confirm_new
     @post = Post.find(reply_params[:post_id])
     @user = @post.user
@@ -31,5 +33,11 @@ class RepliesController < ApplicationController
 
   def reply_params
     params.require(:reply).permit(:content, :post_id)
+  end
+
+  def reply_only_opened_posts
+    @post = Post.find(reply_params[:post_id])
+    redirect_to toppages_show_url if @post.status == false
+    flash[:danger] = 'この質問は締め切られています。'
   end
 end

@@ -20,28 +20,32 @@
         </div>
       </div>
       <% if @user == current_user %>
-      <div class="other-posts my-3">
-        <div class="text-center">
-          <h1>回答一覧</h1>
-          <p>この質問に送られてきた回答の一覧です。回答は他の人には見えません。</p>
+        <div class="other-posts my-3">
+          <div class="text-center">
+            <h1>回答一覧</h1>
+            <p>この質問に送られてきた回答の一覧です。回答は他の人には見えません。</p>
+          </div>
+          <%= render 'replies/replies', replies: @replies %>
         </div>
-        <%= render 'replies/replies', replies: @replies %>
-      </div>
-      <div class="other-posts my-3">
-      </div>
+        <div class="other-posts my-3">
+        </div>
+      <% elsif @post.status == true %>
+        <div class="form">
+          <div class="text-center pb-2">
+            <%= @user.username %>さんの質問に回答します。回答は匿名で送られます。
+          </div>
+          <%= form_with(model: @reply, local: true, url: confirm_new_reply_path) do |f| %>
+          <div class="form-group">
+            <%= f.text_area :content, class: 'form-control', rows: 5 %>
+            <%= f.hidden_field :post_id, value: @post.id %>
+          </div>
+          <%= f.submit '回答する', class: 'btn btn-secondary btn-block p-3' %>
+          <% end %>
+        </div>
       <% else %>
-      <div class="form">
-        <div class="text-center pb-2">
-          <%= @user.username %>さんの質問に回答します。回答は匿名で送られます。
+        <div class="text-center">
+          <p>この質問への回答は締め切られました。</p>
         </div>
-        <%= form_with(model: @reply, local: true, url: confirm_new_reply_path) do |f| %>
-        <div class="form-group">
-          <%= f.text_area :content, class: 'form-control', rows: 5 %>
-          <%= f.hidden_field :post_id, value: @post.id %>
-        </div>
-        <%= f.submit '回答する', class: 'btn btn-secondary btn-block p-3' %>
-        <% end %>
-      </div>
       <% end %>
     </div>
   </div>
