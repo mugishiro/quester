@@ -20,6 +20,17 @@
         </div>
       </div>
       <% if @user == current_user %>
+        <div class="">
+          <%= link_to '削除', [@user, @post], method: :delete, data: { confirm: "この質問を削除しますか？" },
+          class: 'btn btn-danger' %>
+          <%= form_with(model: [@user, @post], local: true) do |f| %>
+           <% if @post.status == true %>
+              <%= f.submit '締め切る', class: 'btn btn-primary btn-block p-3' %>
+            <% else %>
+              <%= f.submit '回答を受け付ける', class: 'btn btn-primary btn-block p-3' %>
+            <% end %>
+          <% end %>
+        </div>
         <div class="other-posts my-3">
           <div class="text-center">
             <h1>回答一覧</h1>

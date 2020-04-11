@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+  before_action :require_user_logged_in, only: [:confirm_new, :create, :destroy]
+  before_action :correct_user, only: [:confirm_new, :create, :update, :destroy]
+
   def show
     @post = Post.find(params[:id])
     @user = @post.user
@@ -56,5 +59,13 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:content)
+  end
+
+  def correct_user
+    @user = User.find_by!(nickname: params[:user_nickname])
+    if @user != current_user
+      redirect_to toppages_show_url
+      flash[:danger] = '権限がありません。'
+    end
   end
 end

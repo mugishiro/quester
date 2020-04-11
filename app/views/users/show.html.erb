@@ -25,7 +25,7 @@
               <li><%= link_to "回答受付中", user_path(@user) %></li>
               <li><%= link_to "回答締め切り", closed_posts_path(@user) %></li>
             </ul>
-            <%= render 'posts/open_posts', user: @user, posts: @open_posts %>
+            <%= render 'posts/posts', user: @user, posts: @open_posts %>
         </div>
     </div>
 </div>
