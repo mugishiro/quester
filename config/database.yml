@@ -49,4 +49,6 @@ test:
 #
 production:
   <<: *default
- url: <%= ENV['JAWSDB_URL']&.sub('mysql://', 'mysql2://') %>
+  database: qa_production
+  username: qa
+  password: <%= ENV['QA_DATABASE_PASSWORD'] %>
