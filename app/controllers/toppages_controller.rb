@@ -1,5 +1,13 @@
 class ToppagesController < ApplicationController
-  before_action :require_user_logged_in
+  before_action :require_user_logged_in, only: [:show, :follows]
+
+  def index
+    if user_signed_in?
+      @post = current_user.posts.build
+      @open_posts = Post.where(status: true).order(id: :desc).page(params[:page])
+      render :action => "show"
+    end
+  end
 
   def show
     @post = current_user.posts.build

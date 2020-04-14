@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   def require_user_logged_in
     unless user_signed_in?
-      redirect_to new_user_session_url
+      redirect_to root_url
     end
   end
 end

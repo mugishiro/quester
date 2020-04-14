@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
+  root to: 'toppages#index'
+  
   devise_for :users, controllers: { :omniauth_callbacks => "omniauth_callbacks" }
-  devise_scope :user do
-    root to: 'devise/sessions#new'
-  end
   get 'toppages/show'
   get 'toppages/follows'
 

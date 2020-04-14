@@ -37,7 +37,9 @@ class RepliesController < ApplicationController
 
   def reply_only_opened_posts
     @post = Post.find(reply_params[:post_id])
-    redirect_to toppages_show_url if @post.status == false
-    flash[:danger] = 'この質問は締め切られています。'
+    if @post.status == false
+      flash[:danger] = 'この質問は締め切られています。'
+      redirect_to toppages_show_url
+    end
   end
 end
