@@ -18,12 +18,13 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
-    @posts = current_user.posts.order(id: :desc).page(params[:page])
+    @open_posts = Post.where(status: true).order(id: :desc).page(params[:page])
 
     if params[:back].present?
       render 'toppages/show'
       return
     end
+
     @post.image = PostsHelper.build(@post.content).tempfile.open.read
 
     if @post.save

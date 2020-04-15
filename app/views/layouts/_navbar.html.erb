@@ -1,35 +1,23 @@
-<header class="mb-4 border-bottom">
-  <nav class="navbar navbar-expand navbar-light bg-white">
-    <% if user_signed_in? %>
-      <ul class="navbar-nav w-100 nav-justified">
-          <li class="nav-item active">
-              <%= link_to toppages_show_path do%>
-                  <i class="fas fa-home fa-3x"></i>
-                  <br>マイページ</br>
-              <% end %>
-          </li>
-          <li class="nav-item">
-              <%= link_to toppages_follows_path do %>
-                  <i class="fas fa-users fa-3x"></i>
-                  <br>友だち</br>
-              <% end %>
-          </li>
-          <li class="nav-item">
-              <%= link_to edit_user_registration_path do %>
-                  <i class="fas fa-user-edit fa-3x"></i>
-                  <br>質問投稿</br>
-              <% end %>
-          </li>
-          <li class="nav-item">
-              <%= link_to destroy_user_session_path, method: :delete do%>
-                  <i class="fas fa-sign-out-alt fa-3x"></i>
-                  <br>ログアウト</br>
-              <% end %>
-          </li>
-      </ul>
-    <% else %>
+<nav class="navbar navbar-dark justify-content-center">
+  <% if user_signed_in? %>
+    <%= link_to toppages_show_path, class: "nav-item nav-link" do %>
+      <i class="fas fa-home fa-3x"></i>
+      <br>トップページ</br>
+    <% end %>
+    <%= link_to toppages_follows_path, class: "nav-item nav-link" do %>
+      <i class="fas fa-users fa-3x"></i>
+      <br>友だち</br>
+    <% end %>
+    <%= link_to user_path(current_user), class: "nav-item nav-link" do %>
+      <i class="fas fa-user fa-3x"></i>
+      <br>自分</br>
+    <% end %>
+    <%= link_to destroy_user_session_path, method: :delete, class: "nav-item nav-link" do%>
+      <i class="fas fa-cog fa-3x"></i>
+      <br>設定</br>
+    <% end %>
+  <% else %>
       <%= link_to 'サインアップ', new_user_registration_path %>
       <%= link_to 'ログイン', new_user_session_path %>
-    <% end %>
-  </nav>
-</header>
+  <% end %>
+</nav>

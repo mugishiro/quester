@@ -46,6 +46,10 @@ class User < ApplicationRecord
      end
    end
 
+   def url
+    "https://twitter.com/#{nickname}"
+   end
+
    private
 
    def self.dummy_email(auth)
