@@ -1,28 +1,9 @@
-<div class="profile py-4">
-  <div class="media p-3 mb-3 border rounded">
-    <div class="mr-3">
-      <%= link_to image_tag("#{current_user.image_url}", :size => "80x80", :class => "rounded-circle") %>
-    </div>
-    <div class="media-body">
-      <div class="row">
-        <div class="col-md-3">
-          <h5><%= current_user.username %></h5>
-        </div>
-        <div class="col-md-3 offset-md-6 text-right">
-          <%= link_to current_user.url do %>
-          <i class="fab fa-twitter fa-fw">
-          </i>
-          <% end %>
-        </div>
-      </div>
-      <p><%= current_user.description %></p>
-    </div>
-  </div>
+<div class="toppage profile">
+  <%= render 'users/profile', user: current_user %>
   <div class="btn btn-outline-secondary btn-block center-block">
     <%= link_to "自分の質問を見る", user_path(current_user) %>
   </div>
 </div>
-
 <div class="form py-4">
   <div class="text-center">
     <h1>質問する</h1>
@@ -35,7 +16,6 @@
     <% end %>
   </div>
 </div>
-
 <div class="other-posts py-4">
   <div class="text-center">
     <h1>みんなの質問</h1>

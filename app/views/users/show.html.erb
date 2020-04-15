@@ -5,27 +5,15 @@
     description: "#{@user.username}さんの質問です。",
  } %>
 
-<div class="row">
-    <div class="col-sm-6 offset-sm-3">
-        <div class="media p-3 my-4 border rounded">
-            <div class=" mr-2">
-                <%= link_to image_tag("#{@user.image_url}", :size => "80x80", :class => "rounded-circle") %>
-            </div>
-            <div class="media-body">
-                <h5><%= @user.username %></h5>
-                <p><%= @user.description %></p>
-            </div>
-        </div>
-        <div class="other-posts my-3">
-            <div class="text-center">
-                <h1>過去の質問</h1>
-                <p><%= @user.username %>さんの質問です</p>
-            </div>
-            <ul class="nav nav-tabs">
-              <li><%= link_to "回答受付中", user_path(@user) %></li>
-              <li><%= link_to "回答締め切り", closed_posts_path(@user) %></li>
-            </ul>
-            <%= render 'posts/posts', user: @user, posts: @open_posts %>
-        </div>
-    </div>
+<%= render 'users/profile', user: @user %>
+<div class="other-posts my-3">
+  <div class="text-center">
+    <h1>過去の質問</h1>
+    <p><%= @user.username %>さんの質問です</p>
+  </div>
+  <ul class="nav nav-tabs">
+    <li><%= link_to "回答受付中", user_path(@user) %></li>
+    <li><%= link_to "回答締め切り", closed_posts_path(@user) %></li>
+  </ul>
+  <%= render 'posts/posts', user: @user, posts: @open_posts %>
 </div>

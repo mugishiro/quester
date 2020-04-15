@@ -1,11 +1,11 @@
-<div class="form">
-    <div class="text-center pb-2">
-      こちらの内容でよろしいですか？
-    </div>
-    <%= form_with(model: [current_user, @post], local: true) do |f| %>
-        <p><%= @post.content %></p>
-        <%= f.hidden_field :content, value: @post.content %>
-        <%= f.submit '戻る', name: 'back', class: 'btn btn-primary mr-3' %>
-        <%= f.submit '登録', class: 'btn btn-secondary' %>
-    <% end %>
+<div class="text-center py-2">
+  <h5>この内容で送信します。<br>よろしいですか？</h5>
+</div>
+<div class="form-group">
+  <%= form_with(model: [current_user, @post], local: true) do |f| %>
+      <p><%= @post.content %></p>
+      <%= f.hidden_field :content, value: @post.content %>
+      <%= f.submit '送信する', class: 'btn btn-outline-secondary btn-block' %>
+      <%= f.submit 'キャンセル', name: 'back', class: 'btn btn-primary btn-block p-3 my-3' %>
+  <% end %>
 </div>

@@ -1,33 +1,31 @@
-          <div class="text-center">
-            <h1>友だち</h1>
-            <p>Twitterでフォローしているユーザーの一覧です</p>
-          </div>
-<% @friends.each do |friend| %>
-  <div class="profile p-4">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-6 offset-sm-3">
-          <div class="media p-3 border rounded">
-            <div class="mr-3">
-              <%= link_to image_tag("#{friend.image_url}", :size => "80x80", :class => "rounded-circle") %>
-            </div>
-            <div class="media-body">
-              <div class="row">
-                <div class="col-md-3">
-                  <h5><%= friend.username %></h5>
-                </div>
-                <div class="col-md-3 offset-md-6 text-right">
-                  <%= link_to friend.url do %>
-                  <i class="fab fa-twitter fa-fw">
-                  </i>
-                  <% end %>
-                </div>
-              </div>
-              <p><%= friend.description %></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="profile py-4">
+  <div class="text-center">
+    <h1>友だち</h1>
+    <p>Twitterでフォローしているユーザーの一覧です</p>
   </div>
-<% end %>
+  <ul class="list-unstyled">
+    <% @friends.each do |friend| %>
+      <%= link_to user_path(friend) do %>
+        <li class="media p-3 mb-3 border rounded">
+          <div class="mr-3">
+            <%= link_to image_tag("#{friend.image_url}", :size => "80x80", :class => "rounded-circle") %>
+          </div>
+          <div class="media-body">
+            <div class="row">
+              <div class="col-md-3">
+                <h5><%= friend.username %></h5>
+              </div>
+              <div class="col-md-3 offset-md-6 text-right">
+                <%= link_to friend.url do %>
+                  <i class="fab fa-twitter fa-fw"></i>
+                <% end %>
+              </div>
+            </div>
+            <p><%= friend.description %></p>
+            <p class="text-right m-0">質問を見る</p>
+          </div>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
