@@ -5,7 +5,11 @@
     description: "#{@user.username}さんの質問です。",
  } %>
 
-<%= render 'users/profile', user: @user %>
+<div class="user-profile card my-5">
+  <div class="card-body">
+    <%= render 'users/profile', user: @user %>
+  </div>
+</div>
 <div class="other-posts my-3">
   <div class="text-center">
     <h1>過去の質問</h1>

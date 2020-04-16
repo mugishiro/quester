@@ -1,17 +1,21 @@
-<ul class="list-unstyled">
-  <% posts.each do |post| %>
-    <%= link_to user_post_path(post.user, post) do %>
-      <li class="media p-3 mb-3 border rounded">
-        <div class="mr-3">
-          <%= image_tag("#{post.user.image_url}", :size => "60x60", :class => "rounded-circle") %>
-        </div>
-        <div class="media-body">
-          <h5><%= post.user.username %></h5>
-          <p><%= post.content %></p>
-          <p class="text-right m-0">回答する</p>
-        </div>
-      </li>
-    <% end %>
-  <% end %>
-  <%= paginate posts %>
-</ul>
+<div class="card">
+  <div class="card-body">
+    <ul class="list-unstyled">
+      <% posts.each do |post| %>
+        <%= link_to user_post_path(post.user, post) do %>
+          <li class="media p-3 mb-3 border rounded">
+            <div class="mr-3">
+              <%= image_tag("#{post.user.image_url}", :size => "60x60", :class => "rounded-circle") %>
+            </div>
+            <div class="media-body">
+              <h5><%= post.user.username %></h5>
+              <p><%= post.content %></p>
+              <p class="text-right m-0">回答する</p>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
+      <%= paginate posts %>
+    </ul>
+  </div>
+</div>
