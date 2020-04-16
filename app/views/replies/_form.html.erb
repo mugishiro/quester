@@ -1,0 +1,7 @@
+  <div class="card-body">
+    <%= form_with(model: reply, local: true, url: confirm_new_reply_path) do |f| %>
+      <%= f.text_area :content, class: 'form-control', rows: 5 %>
+      <%= f.hidden_field :post_id, value: post.id %>
+      <%= f.submit '回答する', class: 'btn btn-outline-secondary btn-block p-3 mt-3' %>
+    <% end %>
+  </div>

@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   root to: 'toppages#index'
-  
+
   devise_for :users, controllers: { :omniauth_callbacks => "omniauth_callbacks" }
   get 'toppages/show'
   get 'toppages/follows'
+  get 'toppages/edit'
 
   resources :users, only: [:show], param: :nickname do
     resources :posts, only: [:show, :create, :update, :destroy] do

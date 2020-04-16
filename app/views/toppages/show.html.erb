@@ -1,9 +1,7 @@
-<div class="toppage-profile card my-5">
+<div class="toppage-profile card bg-light my-5">
   <div class="card-body">
     <%= render 'users/profile', user: current_user %>
-    <div class="btn btn-outline-secondary btn-block center-block">
-      <%= link_to "自分の質問を見る", user_path(current_user) %>
-    </div>
+    <%= link_to "自分の質問を見る", user_path(current_user), class: "btn btn-outline-secondary btn-block" %>
   </div>
 </div>
 <div class="form my-5">
@@ -11,11 +9,11 @@
     <h1>質問する</h1>
     <p>新しく質問を投稿します。何でも聞いてみましょう。</p>
   </div>
-  <div class="form-group card">
+  <div class="form-group card bg-light">
     <div class="card-body">
       <%= form_with(model: [current_user, @post], local: true, url: confirm_new_user_post_path(current_user)) do |f| %>
         <%= f.text_area :content, class: 'form-control', rows: 8 %>
-        <%= f.submit '質問する', class: 'btn btn-outline-secondary btn-block p-3 my-3' %>
+        <%= f.submit '質問する', class: 'btn btn-outline-secondary btn-block p-3 mt-3' %>
       <% end %>
     </div>
   </div>

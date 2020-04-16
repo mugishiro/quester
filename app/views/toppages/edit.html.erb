@@ -1,0 +1,13 @@
+<div class="logout my-5">
+  <%= link_to "ログアウト", destroy_user_session_path, method: :delete,
+      class: "btn btn-outline-secondary btn-block" %>
+</div>
+<div class="withdraw my-5">
+  <div class="text-center">
+    <h1>退会</h1>
+    <p>Twitterとの連携を解除し、退会します。<br>
+      なお、退会すると今までの質問がすべて削除されますのでご注意ください。</p>
+    <%= button_to "退会する", registration_path(current_user),
+      data: { confirm: "本当に退会しますか？" }, method: :delete %>
+  </div>
+</div>

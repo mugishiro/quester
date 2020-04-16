@@ -3,14 +3,15 @@
     <h1>友だち</h1>
     <p>Twitterでフォローしているユーザーの一覧です</p>
   </div>
-  <div class="card">
+  <div class="card bg-light">
     <div class="card-body">
       <ul class="list-unstyled">
         <% @friends.each do |friend| %>
-          <%= link_to user_path(friend) do %>
             <li class="media p-3 mb-3 border rounded">
               <div class="mr-3">
-                <%= link_to image_tag("#{friend.image_url}", :size => "80x80", :class => "rounded-circle") %>
+                <%= link_to user_path(friend) do %>
+                  <%= image_tag("#{friend.image_url}", :size => "80x80", :class => "rounded-circle") %>
+                <% end %>
               </div>
               <div class="media-body">
                 <div class="row">
@@ -24,10 +25,11 @@
                   </div>
                 </div>
                 <p><%= friend.description %></p>
-                <p class="text-right m-0">質問を見る</p>
+                <%= link_to user_path(friend) do %>
+                  <p class="text-right m-0">質問を見る</p>
+                <% end %>
               </div>
             </li>
-          <% end %>
         <% end %>
       </ul>
     </div>

@@ -1,10 +1,13 @@
-<ul class="list-unstyled">
-  <% replies.each do |reply| %>
-      <li class="media mb-3">
-        <div class="media-body">
-          <p><%= reply.content %></p>
-        </div>
-      </li>
-  <% end %>
-  
-</ul>
+<div class="card bg-light">
+  <div class="card-body">
+    <ul class="list-unstyled" >
+      <% replies.each do |reply| %>
+        <li class="media p-3 mb-3 border rounded">
+          <div class="media-body">
+            <p><%= reply.content %></p>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

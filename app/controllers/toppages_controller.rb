@@ -17,4 +17,7 @@ class ToppagesController < ApplicationController
   def follows
     @friends = current_user.registered_following_users
   end
+
+  def edit
+  end
 end
