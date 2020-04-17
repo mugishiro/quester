@@ -6,9 +6,7 @@
     image: "#{request.base_url}/posts/get_image?id=#{@post.id}"
  } %>
 
-<div class="post-image">
-  <%= image_tag(url_for(:action => 'get_image', :id => @post.id)) %>
-</div>
+<%= image_tag(url_for(controller: 'posts', action: 'get_image', id: @post.id), width: "690", class: "img-fluid") %>
 <div class="media p-3 my-4 border rounded">
   <%= link_to image_tag("#{@user.image_url}", size: "80x80", class: "rounded-circle mr-2") %>
   <div class="media-body">

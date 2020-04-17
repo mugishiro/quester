@@ -9,7 +9,7 @@
     <h1>質問する</h1>
     <p>新しく質問を投稿します。何でも聞いてみましょう。</p>
   </div>
-  <div class="form-group card" >
+  <div class="form-group card">
     <div class="card-body">
       <%= form_with(model: [current_user, @post], local: true, url: confirm_new_user_post_path(current_user)) do |f| %>
         <%= f.text_area :content, class: 'form-control', rows: 8 %>

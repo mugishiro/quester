@@ -27,6 +27,5 @@ module ApplicationHelper
        card: 'summary_large_image',
      }
    }
-   # 変更するべきあたいはtitle, description, og:title, og;description, og:image,
   end
 end

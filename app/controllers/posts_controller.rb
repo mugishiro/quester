@@ -56,7 +56,7 @@ class PostsController < ApplicationController
 
   def get_image
     @image = Post.find(params[:id]).image
-    send_data(@image, :disposition => "inline", :type => "image/jpeg")
+    send_data(@image, disposition: "inline", type: "image/jpeg")
   end
 
   private

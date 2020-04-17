@@ -10,6 +10,7 @@ class RepliesController < ApplicationController
   def create
     @post = Post.find(reply_params[:post_id])
     @user = @post.user
+    @replies = @post.replies if @user == current_user
     @reply = @post.replies.build(reply_params)
 
     if params[:back].present?
