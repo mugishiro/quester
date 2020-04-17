@@ -39,8 +39,8 @@ class User < ApplicationRecord
 
    def self.set_twitter_client(user)
      Twitter::REST::Client.new do |config|
-       config.consumer_key = ENV["CONSUMER_KEY"]
-       config.consumer_secret = ENV["CONSUMER_SECRET"]
+       config.consumer_key = Rails.application.credentials.twitter[:consumer_key]
+       config.consumer_secret = Rails.application.credentials.twitter[:consumer_secret]
        config.access_token = user.access_token
        config.access_token_secret = user.access_secret
      end
