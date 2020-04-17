@@ -2,8 +2,8 @@
     class: 'btn btn-danger btn-block mt-3' %>
 <%= form_with(model: [user, post], local: true) do |f| %>
   <% if post.status %>
-    <%= f.submit '締め切る', class: 'btn btn-primary btn-block mt-3' %>
+    <%= f.submit '締め切る', class: 'btn btn-primary btn-block mt-2' %>
   <% else %>
-    <%= f.submit '回答を受け付ける', class: 'btn btn-primary btn-block mt-3' %>
+    <%= f.submit '回答を受け付ける', class: 'btn btn-primary btn-block mt-2' %>
   <% end %>
 <% end %>

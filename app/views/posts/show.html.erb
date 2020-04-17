@@ -24,7 +24,7 @@
     <h1>回答する</h1>
     <p><%= @user.username %>さんの質問に回答します。回答は匿名で送られます。</p>
   </div>
-  <div class="form-group card bg-light">
+  <div class="form-group card">
     <% if @post.status %>
       <%= render 'replies/form', reply: @reply, post: @post %>
     <% else %>

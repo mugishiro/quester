@@ -20,11 +20,13 @@
 
   <body>
     <%= render 'layouts/navbar' %>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-6 offset-sm-3">
-          <%= render 'layouts/flash_messages' %>
-          <%= yield %>
+    <div class="main bg-light">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-6 offset-sm-3">
+            <%= render 'layouts/flash_messages' %>
+            <%= yield %>
+          </div>
         </div>
       </div>
     </div>
