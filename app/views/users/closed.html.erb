@@ -5,19 +5,4 @@
     description: "#{@user.username}さんの質問です。",
  } %>
 
-<div class="user-profile card my-5">
-  <div class="card-body">
-    <%= render 'users/profile', user: @user %>
-  </div>
-</div>
-<div class="other-posts my-3">
-  <div class="text-center">
-    <h1>過去の質問</h1>
-    <p><%= @user.username %>さんの質問です</p>
-  </div>
-  <ul class="nav nav-tabs">
-    <li><%= link_to "回答受付中", user_path(@user) %></li>
-    <li><%= link_to "回答締め切り", closed_posts_path(@user) %></li>
-  </ul>
-  <%= render 'posts/posts', user: @user, posts: @closed_posts %>
-</div>
+<%= render 'users/posts', user: @user, posts: @closed_posts %>

@@ -1,17 +1,13 @@
 <div class="profile">
   <div class="media p-3 border rounded">
-    <div class="mr-3">
-      <%= link_to image_tag("#{user.image_url}", :size => "80x80", :class => "rounded-circle") %>
-    </div>
+    <%= link_to image_tag("#{user.image_url}", size: "80x80", class: "rounded-circle mr-3") %>
     <div class="media-body">
       <div class="row">
         <div class="col-md-3">
           <h5><%= user.username %></h5>
         </div>
         <div class="col-md-3 offset-md-6 text-right">
-          <%= link_to user.url do %>
-            <i class="fab fa-twitter fa-fw"></i>
-          <% end %>
+          <%= link_to user.url do %><i class="fab fa-twitter fa-fw"></i><% end %>
         </div>
       </div>
       <p><%= user.description %></p>
