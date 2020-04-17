@@ -1,0 +1,19 @@
+<li class="media p-3 mb-3 border rounded">
+  <%= link_to user_path(friends) do %>
+    <%= image_tag("#{friends.image_url}", size: "80x80", class: "rounded-circle mr-3") %>
+  <% end %>
+  <div class="media-body">
+    <div class="row">
+      <div class="col-md-3">
+        <h5><%= friends.username %></h5>
+      </div>
+      <div class="col-md-3 offset-md-6 text-right">
+        <%= link_to friends.url do %><i class="fab fa-twitter fa-fw"></i><% end %>
+      </div>
+    </div>
+    <p><%= friends.description %></p>
+    <%= link_to user_path(friends) do %>
+      <p class="text-right m-0">質問を見る</p>
+    <% end %>
+  </div>
+</li>

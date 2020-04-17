@@ -1,0 +1,23 @@
+
+<div class="user-profile card my-5">
+  <div class="card-body">
+    <%= render 'users/profile', user: user %>
+  </div>
+</div>
+<div class="other-posts my-3">
+  <div class="text-center">
+    <h1>過去の質問</h1>
+    <p><%= user.username %>さんの質問です</p>
+  </div>
+  <ul class="nav nav-tabs nav-fill">
+    <% case controller.action_name %>
+    <% when "show" %>
+      <li class="nav-item"><%= link_to "回答受付中", user_path(user), class: "nav-link active" %></li>
+      <li class="nav-item"><%= link_to "回答締め切り", closed_posts_path(user), class: "nav-link" %></li>
+    <% when "closed" %>
+      <li class="nav-item"><%= link_to "回答受付中", user_path(user), class: "nav-link" %></li>
+      <li class="nav-item"><%= link_to "回答締め切り", closed_posts_path(user), class: "nav-link active" %></li>
+    <% end %>
+  </ul>
+  <%= render 'posts/posts', user: user, posts: posts %>
+</div>
