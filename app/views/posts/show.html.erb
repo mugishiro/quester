@@ -3,7 +3,7 @@
   og: {
     title: "#{@user.username}(#{@user.nickname})",
     description: "質問です。「#{@post.content}」",
-    image: "#{request.base_url}/posts/get_image?id=#{@post.id}"
+    image: "#{@post.image_url}"
  } %>
 
 <!-- image_tag(url_for(controller: 'posts', action: 'get_image', id: @post.id), width: "690", class: "img-fluid")  -->
