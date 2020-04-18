@@ -25,7 +25,9 @@ class PostsController < ApplicationController
       return
     end
 
-    @post.image = PostsHelper.build(@post.content).tempfile.open.read
+    # @post.image = PostsHelper.build(@post.content).tempfile.open.read
+    f = File.open(Rails.root.join("app/assets/images/default.png"))
+    @post.image.attach(io: f, filename: 'default.png')
 
     if @post.save
       flash[:success] = '質問を投稿しました。'

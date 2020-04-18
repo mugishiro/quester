@@ -10,8 +10,8 @@ module PostsHelper
   class << self
     def build(text)
       text = prepare_text(text)
-      @image = MiniMagick::Image.open(BASE_IMAGE_PATH)
-      configuration(text)
+      { combine_options: { gravity: GRAVITY, pointsize: 100, font: FONT,
+       draw: "text #{TEXT_POSITION} '#{text}'"} }
     end
 
     private
