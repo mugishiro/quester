@@ -16,5 +16,10 @@
       <i class="fas fa-cog fa-3x"></i>
       <br>設定</br>
     <% end %>
+  <% else %>
+    <%= link_to user_twitter_omniauth_authorize_path, class: "nav-item nav-link" do%>
+      <i class="fas fa-sign-in-alt"></i>
+      <br>ログイン</br>
+    <% end %>
   <% end %>
 </nav>
