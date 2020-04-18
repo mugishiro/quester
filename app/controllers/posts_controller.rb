@@ -25,8 +25,8 @@ class PostsController < ApplicationController
       return
     end
 
-    # @post.image = PostsHelper.build(@post.content).tempfile.open.read
-    f = File.open(Rails.root.join("app/assets/images/default.png"))
+    f = PostsHelper.build(@post.content).tempfile.open
+    # f = File.open(Rails.root.join("app/assets/images/default.png"))
     @post.image.attach(io: f, filename: 'default.png')
 
     if @post.save
