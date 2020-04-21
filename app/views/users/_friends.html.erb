@@ -5,7 +5,7 @@
   <div class="media-body">
     <div class="row">
       <div class="col-md-3">
-        <h5><%= friends.username %></h5>
+        <%= link_to user_path(friends) do %><h5><%= friends.username %></h5><% end %>
       </div>
       <div class="col-md-3 offset-md-6 text-right">
         <%= link_to friends.url do %><i class="fab fa-twitter fa-fw"></i><% end %>

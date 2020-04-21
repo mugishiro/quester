@@ -10,13 +10,7 @@
     <p>新しく質問を投稿します。何でも聞いてみましょう。</p>
   </div>
   <div class="form-group card">
-    <div class="card-body">
-      <%= form_with(model: [current_user, @post], local: true, url: confirm_new_user_post_path(current_user)) do |f| %>
-        <%= f.text_area :content, class: 'form-control js-text', rows: 8 %>
-        <p class="js-text-count pull-right"></p>
-        <%= f.submit '質問する', class: 'btn btn-outline-secondary btn-block p-3 mt-3' %>
-      <% end %>
-    </div>
+    <%= render 'posts/form', user: current_user, post: @post %>
   </div>
 </div>
 <div class="other-posts my-5">

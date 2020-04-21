@@ -3,16 +3,19 @@
   og: {
     title: "#{@user.username}(#{@user.nickname})",
     description: "質問です。「#{@post.content}」",
-    image: "#{@post.image_url}"
+    image: "#{@post.image_url}",
  } %>
 
-<!-- image_tag(url_for(controller: 'posts', action: 'get_image', id: @post.id), width: "690", class: "img-fluid")  -->
-<%= image_tag(@post.image, width: "690") if @post.image.attached? %>
-<div class="media p-3 my-4 border rounded">
-  <%= link_to image_tag("#{@user.image_url}", size: "80x80", class: "rounded-circle mr-2") %>
-  <div class="media-body">
-    <h5><%= @user.username %></h5>
-    <p><%= @post.content %></p>
+<%= image_tag(@post.image, width: "690", class: "img-fluid") if @post.image.attached? %>
+<div class="toppage-profile card my-5">
+  <div class="card-body">
+    <div class="media p-3 border rounded">
+      <%= link_to image_tag("#{@user.image_url}", size: "80x80", class: "rounded-circle mr-3") %>
+      <div class="media-body">
+        <h5><%= @user.username %></h5>
+        <p><%= @post.content %></p>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -25,7 +28,9 @@
     <% if @post.status %>
       <%= render 'replies/form', reply: @reply, post: @post %>
     <% else %>
-      <p class="text-center">この質問への回答は締め切られました。</p>
+      <div class="card-body text-center">
+        この質問への回答は締め切られました。
+      </div>
     <% end %>
   </div>
 </div>

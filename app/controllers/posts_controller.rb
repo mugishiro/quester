@@ -34,7 +34,7 @@ class PostsController < ApplicationController
       client = User.set_twitter_client(current_user)
       text = "situmon\n#q #a\n#{request.base_url}/users/#{current_user.nickname}/posts/#{@post.id}"
       client.update(text)
-      redirect_to toppages_show_path
+      redirect_to user_post_path(current_user, @post)
     else
       flash.now[:danger] = '質問の投稿に失敗しました。'
       render 'toppages/show'
@@ -46,6 +46,11 @@ class PostsController < ApplicationController
     @user = @post.user
     @post.status = !@post.status
     @post.save
+    if @post.status
+      flash[:success] = '回答を受け付けました'
+    else
+      flash[:success] = '回答を締め切りました'
+    end
     redirect_to user_url(@user)
   end
 
@@ -53,7 +58,8 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @user = @post.user
     @post.destroy
-    redirect_to user_url(@user), notice: "質問を削除しました。"
+    flash[:success] = '質問を削除しました。'
+    redirect_to user_url(@user)
   end
 
   def get_image

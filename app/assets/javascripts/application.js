@@ -30,7 +30,7 @@ $(function (){
     $(".js-text-count").css("color","red");
   }
   //残りの入力できる文字数を表示
-  $(".js-text-count").text( "残り" + now_count + "文字");
+  $(".js-text-count").text( 0 + "/" + max);
 
   $(".js-text").on("keyup", function() {
     // 処理（キーボードを押した時、フォームに残り何文字入力できるかを数えて表示する）
@@ -43,6 +43,6 @@ $(function (){
     } else {
       $(".js-text-count").css("color","black");
     }
-    $(".js-text-count").text( "残り" + now_count + "文字");
+    $(".js-text-count").text( max - now_count + "/" + max);
   });
 });
