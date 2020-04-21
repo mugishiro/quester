@@ -32,7 +32,7 @@ class PostsController < ApplicationController
     if @post.save
       flash[:success] = '質問を投稿しました。'
       client = User.set_twitter_client(current_user)
-      text = "#{@post.content}\n\n#q #a\n#{request.base_url}/users/#{current_user.nickname}/posts/#{@post.id}"
+      text = "situmon\n#q #a\n#{request.base_url}/users/#{current_user.nickname}/posts/#{@post.id}"
       client.update(text)
       redirect_to toppages_show_path
     else

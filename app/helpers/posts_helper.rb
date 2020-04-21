@@ -25,18 +25,21 @@ module PostsHelper
     def configuration(text)
       @image.combine_options do |config|
         config.font FONT
-        config.gravity GRAVITY
+        config.gravity 'center'
         config.pointsize @font_size
         config.draw "text #{TEXT_POSITION} '#{text}'"
       end
     end
 
     def prepare_text(text)
-      if text.length >= 90
-        @font_size = 20
-        indention_count = 50
+      if text.length >= 300
+        indention_count = 25
+        @font_size = 10
+      elsif text.length >= 100
+        indention_count = 20
+        @font_size = 30
       else
-        indention_count = 30
+        indention_count = 10
         @font_size = 40
       end
       text.scan(/.{1,#{indention_count}}/)[0...ROW_LIMIT].join("\n")
