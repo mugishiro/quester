@@ -1,18 +1,18 @@
 <nav class="navbar navbar-dark justify-content-center text-center">
   <% if user_signed_in? %>
-    <%= link_to toppages_show_path, class: "nav-item nav-link mx-3" do %>
+    <%= link_to toppages_show_path, class: "nav-item nav-link mx-4" do %>
       <i class="fas fa-home fa-3x"></i>
       <br>トップページ</br>
     <% end %>
-    <%= link_to toppages_follows_path, class: "nav-item nav-link mx-3" do %>
+    <%= link_to toppages_follows_path, class: "nav-item nav-link mx-4" do %>
       <i class="fas fa-users fa-3x"></i>
       <br>友だち</br>
     <% end %>
-    <%= link_to user_path(current_user), class: "nav-item nav-link mx-3" do %>
+    <%= link_to user_path(current_user), class: "nav-item nav-link mx-4" do %>
       <i class="fas fa-user fa-3x"></i>
       <br>自分</br>
     <% end %>
-    <%= link_to toppages_edit_path, class: "nav-item nav-link mx-3" do%>
+    <%= link_to toppages_edit_path, class: "nav-item nav-link mx-4" do%>
       <i class="fas fa-cog fa-3x"></i>
       <br>設定</br>
     <% end %>

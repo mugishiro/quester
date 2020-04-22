@@ -9,7 +9,11 @@
       </div>
       <%= f.hidden_field :content, value: @post.content %>
       <%= f.submit '送信する', class: 'btn btn-outline-secondary btn-block' %>
-      <%= f.submit 'キャンセル', name: 'back', class: 'btn btn-primary btn-block mu-3' %>
+      <%= f.submit 'キャンセル', name: 'back', class: 'btn btn-danger btn-block' %>
+      <%= f.label :tweet, class: "checkbox inline mt-3" do %>
+        <%= f.check_box :tweet %>
+        <span>質問をツイートする</span>
+      <% end %>
     <% end %>
   </div>
 </div>

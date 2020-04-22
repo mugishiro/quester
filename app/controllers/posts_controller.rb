@@ -9,9 +9,6 @@ class PostsController < ApplicationController
     @replies = @post.replies if @user == current_user
   end
 
-  def new
-  end
-
   def confirm_new
     @post = current_user.posts.build(post_params)
   end
@@ -26,14 +23,16 @@ class PostsController < ApplicationController
     end
 
     f = PostsHelper.build(@post.content).tempfile.open
-    # f = File.open(Rails.root.join("app/assets/images/default.png"))
     @post.image.attach(io: f, filename: 'default.png')
 
     if @post.save
       flash[:success] = '質問を投稿しました。'
-      client = User.set_twitter_client(current_user)
-      text = "situmon\n#q #a\n#{request.base_url}/users/#{current_user.nickname}/posts/#{@post.id}"
-      client.update(text)
+      if params[:post][:tweet] == '1'
+        client = User.set_twitter_client(current_user)
+        text = "#{current_user.nickname}さんの質問です。\n#MyQuestion\n
+                #{request.base_url}/users/#{current_user.nickname}/posts/#{@post.id}"
+        client.update(text)
+      end
       redirect_to user_post_path(current_user, @post)
     else
       flash.now[:danger] = '質問の投稿に失敗しました。'
@@ -76,8 +75,8 @@ class PostsController < ApplicationController
   def correct_user
     @user = User.find_by!(nickname: params[:user_nickname])
     if @user != current_user
-      redirect_to toppages_show_url
       flash[:danger] = '権限がありません。'
+      redirect_to toppages_show_url
     end
   end
 end

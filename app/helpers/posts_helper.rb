@@ -1,11 +1,10 @@
 module PostsHelper
   require 'mini_magick'
 
-  BASE_IMAGE_PATH = './app/assets/images/518.png'.freeze
+  BASE_IMAGE_PATH = './app/assets/images/default.png'.freeze
   GRAVITY = 'center'.freeze
   TEXT_POSITION = '0,0'.freeze
   FONT = './app/assets/fonts/font.ttf'.freeze
-  ROW_LIMIT = 10
 
   class << self
     def build(text)
