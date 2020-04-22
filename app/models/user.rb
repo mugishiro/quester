@@ -1,9 +1,8 @@
 class User < ApplicationRecord
    # Include default devise modules. Others available are:
    # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-   devise :database_authenticatable, :registerable,
-          :recoverable, :rememberable, :validatable,
-          :omniauthable, omniauth_providers: [:twitter]
+   devise :database_authenticatable, :registerable, :rememberable,
+          :validatable, :omniauthable, omniauth_providers: [:twitter]
    has_many :posts, dependent: :destroy
 
    def to_param
@@ -25,8 +24,6 @@ class User < ApplicationRecord
          access_token: auth.credentials.token,
          access_secret: auth.credentials.secret
        )
-       text = "#{user.username}(#{user.nickname})さんの質問です。\n\n#sitsumon #kaitoubosyu\nlocalhost:3000/users/#{user.nickname}"
-       User.set_twitter_client(user).update(text)
      end
      user
    end
