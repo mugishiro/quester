@@ -9,8 +9,8 @@
       </div>
       <%= f.hidden_field :content, value: @reply.content %>
       <%= f.hidden_field :post_id, value: @post.id %>
-      <%= f.submit '送信する', class: 'btn btn-outline-secondary btn-block' %>
-      <%= f.submit 'キャンセル', name: 'back', class: 'btn btn-danger btn-block' %>
+      <%= f.submit '送信する', class: 'btn btn-secondary btn-block' %>
+      <%= f.submit 'キャンセル', name: 'back', class: 'btn btn-light btn-block' %>
     <% end %>
   </div>
 </div>
