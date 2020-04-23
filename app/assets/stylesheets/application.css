@@ -22,6 +22,14 @@ a {
   color: gray;
 }
 
+.card {
+  border: 0;
+}
+
+.nav-tabs .nav-link {
+  border: 0;
+}
+
 .media-body {
   word-break: break-word;
 }

@@ -36,7 +36,9 @@
 </div>
 
 <% if @user == current_user %>
-  <div class="change">
+  <div class="change text-center my-5">
+    <h1>質問設定</h1>
+    <p>回答を募集するか締め切ります。また、質問を削除します。</p>
     <%= render 'posts/edit_form', user: @user, post: @post %>
   </div>
   <div class="other-replies my-5">
