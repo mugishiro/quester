@@ -8,7 +8,7 @@
         <%= simple_format(h(@post.content)) %>
       </div>
       <%= f.hidden_field :content, value: @post.content %>
-      <%= f.submit '送信する', class: 'btn btn-secondary btn-block' %>
+      <%= f.submit '送信する', class: 'btn btn-info btn-block' %>
       <%= f.submit 'キャンセル', name: 'back', class: 'btn btn-light btn-block' %>
       <%= f.label :tweet, class: "checkbox inline mt-3" do %>
         <%= f.check_box :tweet %>

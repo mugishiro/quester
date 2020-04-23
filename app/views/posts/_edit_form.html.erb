@@ -1,8 +1,8 @@
 <%= form_with(model: [user, post], local: true) do |f| %>
   <% if post.status %>
-    <%= f.submit '締め切る', class: 'btn btn-info btn-block mt-2' %>
+    <%= f.submit '締め切る', class: 'btn btn-secondary btn-block mt-2' %>
   <% else %>
-    <%= f.submit '回答を受け付ける', class: 'btn btn-info btn-block mt-2' %>
+    <%= f.submit '回答を受け付ける', class: 'btn btn-secondary btn-block mt-2' %>
   <% end %>
 <% end %>
 <%= link_to '削除する', [user, post], method: :delete, data: { confirm: "この質問を削除しますか？" },

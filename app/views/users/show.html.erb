@@ -1,8 +1,1 @@
-<% set_meta_tags title: "#{@user.username}(#{@user.nickname})",
-    description: "#{@user.username}さんの質問です。",
-  og: {
-    title: "#{@user.username}(#{@user.nickname})",
-    description: "#{@user.username}さんの質問です。",
- } %>
-
 <%= render 'users/posts', user: @user, posts: @open_posts %>

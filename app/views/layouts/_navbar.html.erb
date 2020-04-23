@@ -1,25 +1,33 @@
-<nav class="navbar navbar-dark justify-content-center text-center">
+<ul class="nav bg-light navbar-dark justify-content-center text-center">
   <% if user_signed_in? %>
+  <li class="nav-item">
     <%= link_to toppages_show_path, class: "nav-item nav-link mx-4" do %>
       <i class="fas fa-home fa-3x"></i>
       <br>トップページ</br>
     <% end %>
+  </li>
+  <li class="nav-item">
     <%= link_to toppages_follows_path, class: "nav-item nav-link mx-4" do %>
       <i class="fas fa-users fa-3x"></i>
       <br>友だち</br>
     <% end %>
+  </li>
+  <li class="nav-item">
     <%= link_to user_path(current_user), class: "nav-item nav-link mx-4" do %>
       <i class="fas fa-user fa-3x"></i>
       <br>自分</br>
     <% end %>
+  </li>
+  <li class="nav-item">
     <%= link_to toppages_edit_path, class: "nav-item nav-link mx-4" do%>
       <i class="fas fa-cog fa-3x"></i>
       <br>設定</br>
     <% end %>
+  </li>
   <% else %>
     <%= link_to user_twitter_omniauth_authorize_path, class: "nav-item nav-link" do%>
-      <i class="fas fa-sign-in-alt"></i>
+      <i class="fas fa-sign-in-alt fa-3x"></i>
       <br>ログイン</br>
     <% end %>
   <% end %>
-</nav>
+</ul>

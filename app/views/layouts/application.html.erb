@@ -4,7 +4,7 @@
     <%= display_meta_tags(default_meta_tags) %>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>MyQuestion</title>
+    <title>Quester</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -19,7 +19,9 @@
   </head>
 
   <body>
-    <%= render 'layouts/navbar' %>
+    <div class="container-fluid bg-light">
+      <%= render 'layouts/navbar' %>
+    </div>
     <div class="main py-5">
       <div class="container-fluid">
         <div class="row">

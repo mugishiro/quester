@@ -1,19 +1,19 @@
-<% set_meta_tags title: "#{@user.username}(#{@user.nickname})}",
-    description: "質問です。「#{@post.content}」",
-  og: {
-    title: "#{@user.username}(#{@user.nickname})",
-    description: "質問です。「#{@post.content}」",
-    image: "#{@post.image_url}",
+<% set_meta_tags og: {
+    title: "#{@user.username}@Quester",
+    description: "#{@user.username}さんの質問です。「#{@post.content}」",
+    image: "#{@post.image_url}"
  } %>
 
 <%= image_tag(@post.image, width: "690", class: "img-fluid") if @post.image.attached? %>
+
 <div class="toppage-profile card my-5">
   <div class="card-body">
     <div class="media p-3 border rounded">
-      <%= link_to image_tag("#{@user.image_url}", size: "80x80", class: "rounded-circle mr-3") %>
+      <%= link_to image_tag("#{@user.image_url}", size: "80x80", class: "rounded-circle mr-3"),
+          user_path(@user) %>
       <div class="media-body">
         <h5><%= @user.username %></h5>
-        <p><%= @post.content %></p>
+        <p><%= simple_format(h(@post.content)) %></p>
       </div>
     </div>
   </div>
