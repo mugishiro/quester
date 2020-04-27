@@ -29,7 +29,7 @@ RSpec.describe "Posts", type: :request do
     end
 
     context "as an unauthorized user" do
-      it "does not post and redirect to the toppage" do
+      it "does not post and redirects to the toppage" do
         sign_in other_user
         post confirm_new_user_post_path user.nickname, params: { post: test_post.attributes }
         expect(response.status).to eq 302
@@ -38,7 +38,7 @@ RSpec.describe "Posts", type: :request do
     end
 
     context "as a guest" do
-      it "redirect to the root_url" do
+      it "redirects to the root_url" do
         post confirm_new_user_post_path user.nickname, params: { post: test_post.attributes }
         expect(response.status).to eq 302
         expect(response).to redirect_to root_url
@@ -72,7 +72,7 @@ RSpec.describe "Posts", type: :request do
     end
 
     context "as an unauthorized user" do
-      it "does not post and redirect to the toppage" do
+      it "does not post and redirects to the toppage" do
         sign_in other_user
         post user_posts_path user.nickname, params: { post: test_post.attributes }
         expect(response.status).to eq 302
@@ -81,7 +81,7 @@ RSpec.describe "Posts", type: :request do
     end
 
     context "as a guest" do
-      it "redirect to the root_url" do
+      it "redirects to the root_url" do
         post confirm_new_user_post_path user.nickname, params: { post: test_post.attributes }
         expect(response.status).to eq 302
         expect(response).to redirect_to root_url
@@ -91,7 +91,7 @@ RSpec.describe "Posts", type: :request do
 
   describe "POST #update" do
     context "as an authorized user" do
-      it "toggle the post status" do
+      it "toggles the post status" do
         sign_in user
         patch user_post_path user.nickname, test_post.id
         expect(test_post.reload.status).to eq false
@@ -101,7 +101,7 @@ RSpec.describe "Posts", type: :request do
     end
 
     context "as an unauthorized user" do
-      it "redirect to the toppage" do
+      it "redirects to the toppage" do
         sign_in other_user
         patch user_post_path user.nickname, test_post.id
         expect(response.status).to eq 302
@@ -110,7 +110,7 @@ RSpec.describe "Posts", type: :request do
     end
 
     context "as a guest" do
-      it "redirect to the root_url" do
+      it "redirects to the root_url" do
         patch user_post_path user.nickname, test_post.id
         expect(response.status).to eq 302
         expect(response).to redirect_to root_url
@@ -129,7 +129,7 @@ RSpec.describe "Posts", type: :request do
     end
 
     context "as an unauthorized user" do
-      it "redirect to the toppage" do
+      it "redirects to the toppage" do
         sign_in other_user
         delete user_post_path user.nickname, test_post.id
         expect(response.status).to eq 302
@@ -138,7 +138,7 @@ RSpec.describe "Posts", type: :request do
     end
 
     context "as a guest" do
-      it "redirect to the root_url" do
+      it "redirects to the root_url" do
         delete user_post_path user.nickname, test_post.id
         expect(response.status).to eq 302
         expect(response).to redirect_to root_url

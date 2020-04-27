@@ -30,7 +30,7 @@ ActiveRecord::Migration.maintain_test_schema!
 # OmniAuthをテストモードに変更
 OmniAuth.config.test_mode = true
 # logger
-Rails.logger = Logger.new(STDOUT)
+# Rails.logger = Logger.new(STDOUT)
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures

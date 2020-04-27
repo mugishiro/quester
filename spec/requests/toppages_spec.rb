@@ -43,7 +43,7 @@ RSpec.describe "Toppages", type: :request do
     end
 
     context "as a guest" do
-      it "redirect to the root_url" do
+      it "redirects to the root_url" do
         get toppages_show_path
         expect(response.status).to eq 302
         expect(response).to redirect_to root_url
@@ -53,7 +53,7 @@ RSpec.describe "Toppages", type: :request do
 
   describe "GET #follows" do
     context "as a guest" do
-      it "redirect to the root_url" do
+      it "redirects to the root_url" do
         get toppages_follows_path
         expect(response.status).to eq 302
         expect(response).to redirect_to root_url
@@ -71,7 +71,7 @@ RSpec.describe "Toppages", type: :request do
     end
 
     context "as a guest" do
-      it "redirect to the root_url" do
+      it "redirects to the root_url" do
         get toppages_edit_path
         expect(response.status).to eq 302
         expect(response).to redirect_to root_url
