@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :require_user_logged_in, only: [:confirm_new, :create, :destroy]
+  before_action :require_user_logged_in, only: [:confirm_new, :create, :update, :destroy]
   before_action :correct_user, only: [:confirm_new, :create, :update, :destroy]
 
   def show
@@ -43,7 +43,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     @user = @post.user
-    @post.status = !@post.status
+    @post.toggle(:status)
     @post.save
     if @post.status
       flash[:success] = '回答を受け付けました'
@@ -59,11 +59,6 @@ class PostsController < ApplicationController
     @post.destroy
     flash[:success] = '質問を削除しました。'
     redirect_to user_url(@user)
-  end
-
-  def get_image
-    @image = Post.find(params[:id]).image
-    send_data(@image, disposition: "inline", type: "image/jpeg")
   end
 
   private

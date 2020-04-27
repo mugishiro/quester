@@ -1,9 +1,10 @@
 FactoryBot.define do
   factory :user do
-    email  { "rspec_test@test.com" }
+    sequence(:email) { |n| "tester-#{n}@example.com" }
     uid { "123" }
     provider { "twitter" }
-    username { "anonymous" }
+    username { "test_username" }
+    nickname { "test_nickname" }
     password { "password" }
   end
 end

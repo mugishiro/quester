@@ -1,5 +1,5 @@
 class ToppagesController < ApplicationController
-  before_action :require_user_logged_in, only: [:show, :follows]
+  before_action :require_user_logged_in, only: [:show, :follows, :edit]
 
   def index
     if user_signed_in?

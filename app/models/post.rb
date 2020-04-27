@@ -5,6 +5,8 @@ class Post < ApplicationRecord
   validates :content, presence: true, length: { maximum: 1000 }
 
   def image_url
-    image.attachment.service.send(:object_for, image.key).public_url
+    if Rails.env != "test"
+      image.attachment.service.send(:object_for, image.key).public_url
+    end
   end
 end
