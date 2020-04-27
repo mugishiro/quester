@@ -20,7 +20,7 @@ RSpec.describe "Users", type: :request do
 
     it "has only open_post" do
       expect(response.body).to include "openpost"
-      expect(response.body).to_not include "closedpost"
+      expect(response.body).not_to include "closedpost"
     end
   end
 
@@ -35,7 +35,7 @@ RSpec.describe "Users", type: :request do
 
     it "has only closed_post" do
       expect(response.body).to include "closedpost"
-      expect(response.body).to_not include "openpost"
+      expect(response.body).not_to include "openpost"
     end
   end
 end

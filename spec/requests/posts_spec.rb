@@ -55,18 +55,18 @@ RSpec.describe "Posts", type: :request do
 
       context "with valid attributes" do
         it "adds a post" do
-          expect{
+          expect do
             post user_posts_path user.nickname, params: { post: test_post.attributes }
-          }.to change(Post, :count).by(1)
+          end.to change(Post, :count).by(1)
         end
       end
 
       context "with invalid attributes" do
         it "does not add a post" do
           test_post.update_attribute(:content, nil)
-          expect{
+          expect do
             post user_posts_path user.nickname, params: { post: test_post.attributes }
-          }.to_not change(Post, :count)
+          end.not_to change(Post, :count)
         end
       end
     end
@@ -122,9 +122,9 @@ RSpec.describe "Posts", type: :request do
     context "as an authorized user" do
       it "deletes the post" do
         sign_in user
-        expect {
+        expect do
           delete user_post_path user.nickname, test_post.id
-        }.to change(Post, :count).by(-1)
+        end.to change(Post, :count).by(-1)
       end
     end
 

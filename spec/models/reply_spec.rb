@@ -11,25 +11,28 @@ RSpec.describe Reply, type: :model do
     context "when content is nil" do
       it "is invalid" do
         reply.content = nil
-        expect(reply).to_not be_valid
+        expect(reply).not_to be_valid
       end
     end
+
     context "when content is not too long" do
       it "is valid" do
         reply.content = "a" * 1000
         expect(reply).to be_valid
       end
     end
+
     context "when content is too long" do
       it "is invalid" do
         reply.content = "a" * 1001
-        expect(reply).to_not be_valid
+        expect(reply).not_to be_valid
       end
     end
+
     context "when content is blank" do
       it "is invalid" do
         reply.content = " " * 300
-        expect(reply).to_not be_valid
+        expect(reply).not_to be_valid
       end
     end
   end

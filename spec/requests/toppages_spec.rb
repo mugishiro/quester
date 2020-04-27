@@ -20,7 +20,7 @@ RSpec.describe "Toppages", type: :request do
         sign_in user
         get root_path
         expect(response.body).to include "openpost"
-        expect(response.body).to_not include "closedpost"
+        expect(response.body).not_to include "closedpost"
       end
     end
   end
@@ -38,7 +38,7 @@ RSpec.describe "Toppages", type: :request do
 
       it "has only open_post" do
         expect(response.body).to include "openpost"
-        expect(response.body).to_not include "closedpost"
+        expect(response.body).not_to include "closedpost"
       end
     end
 

@@ -9,16 +9,16 @@ RSpec.describe User, type: :model do
 
   it "is invalid without an email address" do
     user.email = nil
-    expect(user).to_not be_valid
+    expect(user).not_to be_valid
   end
 
-  it "is invalid without an email address" do
+  it "is invalid without a password" do
     user = build(:user, password: nil)
-    expect(user).to_not be_valid
+    expect(user).not_to be_valid
   end
 
   it "deletes posts if user is deleted" do
     post = create(:post)
-    expect{ post.user.destroy }.to change{ Post.count }.by(-1)
+    expect { post.user.destroy }.to change(Post, :count).by(-1)
   end
 end

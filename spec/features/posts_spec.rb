@@ -16,9 +16,9 @@ RSpec.feature "Posts", type: :feature do
         click_button "commit"
         expect(current_path).to eq confirm_new_user_post_path user.nickname
         expect(page).to have_content "test post"
-        expect {
+        expect do
           click_button "commit"
-        }.to change(user.posts, :count).by(1)
+        end.to change(user.posts, :count).by(1)
       end
     end
 
@@ -28,9 +28,9 @@ RSpec.feature "Posts", type: :feature do
         click_button "commit"
         expect(current_path).to eq confirm_new_user_post_path user.nickname
         expect(page).to have_content "a" * 2000
-        expect {
+        expect do
           click_button "commit"
-        }.to_not change(user.posts, :count)
+        end.not_to change(user.posts, :count)
       end
     end
 
@@ -40,9 +40,9 @@ RSpec.feature "Posts", type: :feature do
         click_button "commit"
         expect(current_path).to eq confirm_new_user_post_path user.nickname
         expect(page).to have_content "test post"
-        expect {
+        expect do
           click_button "back"
-        }.to_not change(user.posts, :count)
+        end.not_to change(user.posts, :count)
         expect(page).to have_content "test post"
       end
     end
@@ -57,7 +57,7 @@ RSpec.feature "Posts", type: :feature do
     it "toggles status" do
       click_button "締め切る"
       expect(current_path).to eq user_path user.nickname
-      expect(page).to_not have_content "test post"
+      expect(page).not_to have_content "test post"
       click_link "回答締め切り"
       expect(current_path).to eq closed_posts_path user.nickname
       expect(page).to have_content "test post"
@@ -78,7 +78,7 @@ RSpec.feature "Posts", type: :feature do
     it "deletes a post" do
       click_link "削除する"
       expect(current_path).to eq user_path user.nickname
-      expect(page).to_not have_content "test post"
+      expect(page).not_to have_content "test post"
     end
   end
 end

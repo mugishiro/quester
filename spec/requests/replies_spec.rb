@@ -31,18 +31,18 @@ RSpec.describe "Replies", type: :request do
   describe "GET #create" do
     context "with valid attributes" do
       it "adds a reply" do
-        expect{
+        expect do
           post replies_path, params: { reply: reply.attributes }
-        }.to change(Reply, :count).by(1)
+        end.to change(Reply, :count).by(1)
       end
     end
 
     context "with invalid attributes" do
       it "does not add a reply" do
         reply.update_attribute(:content, nil)
-        expect{
+        expect do
           post replies_path, params: { reply: reply.attributes }
-        }.to_not change(Reply, :count)
+        end.not_to change(Reply, :count)
       end
     end
 

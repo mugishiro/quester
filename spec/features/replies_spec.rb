@@ -15,9 +15,9 @@ RSpec.feature "Replies", type: :feature do
         click_button "commit"
         expect(current_path).to eq confirm_new_reply_path
         expect(page).to have_content "test reply"
-        expect {
+        expect do
           click_button "commit"
-        }.to change(post.replies, :count).by(1)
+        end.to change(post.replies, :count).by(1)
       end
     end
 
@@ -27,9 +27,9 @@ RSpec.feature "Replies", type: :feature do
         click_button "commit"
         expect(current_path).to eq confirm_new_reply_path
         expect(page).to have_content "a" * 2000
-        expect {
+        expect do
           click_button "commit"
-        }.to_not change(post.replies, :count)
+        end.not_to change(post.replies, :count)
       end
     end
 
@@ -39,9 +39,9 @@ RSpec.feature "Replies", type: :feature do
         click_button "commit"
         expect(current_path).to eq confirm_new_reply_path
         expect(page).to have_content "test reply"
-        expect {
+        expect do
           click_button "back"
-        }.to_not change(post.replies, :count)
+        end.not_to change(post.replies, :count)
         expect(page).to have_content "test reply"
       end
     end
