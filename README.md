@@ -1,24 +1,14 @@
-# README
+Questerは、匿名での回答を募集できるサービスです。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+Questerの使い方
 
-* Ruby version
+1.登録/ログインする
+Twitterアカウントを使って登録/ログインしましょう。
 
-* System dependencies
+2.質問する
+疑問に思うことがあれば、何でも質問してみましょう。
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+3.回答する
+フォローしている方々の質問にも答えてみましょう。
+回答は匿名なので、気楽に送ってみましょう。
