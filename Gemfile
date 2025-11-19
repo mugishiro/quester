@@ -1,23 +1,23 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.1'
+ruby '~> 3.1.0'
 
-gem 'rails', '~> 5.2.3'
+gem 'rails', '~> 6.1.7', '>= 6.1.7.9'
 
 # Use mysql as the database for Active Record
-gem 'mysql2', '>= 0.4.4', '< 0.6.0'
-gem 'puma', '~> 3.11'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.2'
+gem 'mysql2', '>= 0.5'
+gem 'puma', '~> 5.6'
+gem 'sass-rails', '>= 6'
+gem 'uglifier', '>= 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
-gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootsnap', '>= 1.4.4', require: false
 gem 'kaminari'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'omniauth-rails_csrf_protection'
 gem 'twitter'
 gem 'dotenv-rails'
 gem 'meta-tags'
@@ -46,7 +46,7 @@ end
 group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
-  gem 'chromedriver-helper'
+  gem 'webdrivers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

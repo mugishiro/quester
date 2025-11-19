@@ -298,5 +298,12 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
 
   # config.omniauth :twitter, ENV["CONSUMER_KEY"], ENV["CONSUMER_SECRET"]
-  config.omniauth :twitter, Rails.application.credentials.twitter[:consumer_key], Rails.application.credentials.twitter[:consumer_secret]
+  twitter_credentials = Rails.application.credentials[:twitter] || {}
+  twitter_consumer_key = ENV['TWITTER_CONSUMER_KEY'] || twitter_credentials[:consumer_key]
+  twitter_consumer_secret = ENV['TWITTER_CONSUMER_SECRET'] || twitter_credentials[:consumer_secret]
+  if Rails.env.test?
+    twitter_consumer_key ||= 'dummy'
+    twitter_consumer_secret ||= 'dummy'
+  end
+  config.omniauth :twitter, twitter_consumer_key, twitter_consumer_secret
 end
