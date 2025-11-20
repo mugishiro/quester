@@ -28,10 +28,15 @@ class PostsController < ApplicationController
     if @post.save
       flash[:success] = '質問を投稿しました。'
       if params[:post][:tweet] == '1'
-        client = User.set_twitter_client(current_user)
-        text = "#{current_user.nickname}さんの質問です。\n#MyQuestion\n
-                #{request.base_url}/users/#{current_user.nickname}/posts/#{@post.id}"
-        client.update(text)
+        begin
+          client = User.set_twitter_client(current_user)
+          text = "#{current_user.nickname}さんの質問です。\n#MyQuestion\n
+                  #{request.base_url}/users/#{current_user.nickname}/posts/#{@post.id}"
+          client.update(text)
+        rescue Twitter::Error => e
+          Rails.logger.warn("Twitter share failed: #{e.class} #{e.message}")
+          flash[:warning] = '質問は投稿されましたが、Twitterへの共有に失敗しました。'
+        end
       end
       redirect_to user_post_path(current_user, @post)
     else
