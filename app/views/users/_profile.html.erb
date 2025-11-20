@@ -10,7 +10,7 @@
           <%= link_to user.url do %><i class="fab fa-twitter fa-fw"></i><% end %>
         </div>
       </div>
-      <p><%= user.description %></p>
+      <p><%= safe_description(user) %></p>
     </div>
   </div>
 </div>

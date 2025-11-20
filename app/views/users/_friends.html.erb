@@ -11,7 +11,7 @@
         <%= link_to friends.url do %><i class="fab fa-twitter fa-fw"></i><% end %>
       </div>
     </div>
-    <p><%= friends.description %></p>
+    <p><%= safe_description(friends) %></p>
     <%= link_to user_path(friends) do %>
       <p class="text-right m-0">質問を見る</p>
     <% end %>
