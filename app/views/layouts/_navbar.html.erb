@@ -1,33 +1,35 @@
-<ul class="nav bg-light navbar-dark justify-content-center text-center">
+<header class="app-navbar shadow-sm">
+  <div class="brand">
+    <%= link_to root_path do %>
+      <i class="fas fa-comment-dots"></i>
+      <span>Quester</span>
+    <% end %>
+  </div>
   <% if user_signed_in? %>
-  <li class="nav-item">
-    <%= link_to toppages_show_path, class: "nav-item nav-link mx-4" do %>
-      <i class="fas fa-home fa-3x"></i>
-      <br>トップページ</br>
-    <% end %>
-  </li>
-  <li class="nav-item">
-    <%= link_to toppages_follows_path, class: "nav-item nav-link mx-4" do %>
-      <i class="fas fa-users fa-3x"></i>
-      <br>友だち</br>
-    <% end %>
-  </li>
-  <li class="nav-item">
-    <%= link_to user_path(current_user), class: "nav-item nav-link mx-4" do %>
-      <i class="fas fa-user fa-3x"></i>
-      <br>自分</br>
-    <% end %>
-  </li>
-  <li class="nav-item">
-    <%= link_to toppages_edit_path, class: "nav-item nav-link mx-4" do%>
-      <i class="fas fa-cog fa-3x"></i>
-      <br>設定</br>
-    <% end %>
-  </li>
+    <nav class="nav-links">
+      <%= link_to toppages_show_path, class: "nav-link-pill #{'is-active' if current_page?(toppages_show_path)}" do %>
+        <i class="fas fa-home"></i>
+        <span>ホーム</span>
+      <% end %>
+      <%= link_to toppages_follows_path, class: "nav-link-pill #{'is-active' if current_page?(toppages_follows_path)}" do %>
+        <i class="fas fa-users"></i>
+        <span>友だち</span>
+      <% end %>
+      <%= link_to user_path(current_user), class: "nav-link-pill" do %>
+        <i class="fas fa-user-circle"></i>
+        <span>マイページ</span>
+      <% end %>
+      <%= link_to toppages_edit_path, class: "nav-link-pill" do %>
+        <i class="fas fa-cog"></i>
+        <span>設定</span>
+      <% end %>
+    </nav>
+    <div class="nav-cta d-none d-md-block">
+      <span class="text-muted small">ようこそ、<%= current_user.username %> さん</span>
+    </div>
   <% else %>
-    <%= link_to user_twitter_omniauth_authorize_path, method: :post, class: "nav-item nav-link" do%>
-      <i class="fas fa-sign-in-alt fa-3x"></i>
-      <br>ログイン</br>
-    <% end %>
+    <div class="nav-cta">
+      <%= link_to "Twitterでログイン", user_twitter_omniauth_authorize_path, method: :post, class: "btn btn-gradient", data: { turbo: false } %>
+    </div>
   <% end %>
-</ul>
+</header>
