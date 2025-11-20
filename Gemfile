@@ -6,7 +6,7 @@ ruby '~> 3.1.0'
 gem 'rails', '~> 6.1.7', '>= 6.1.7.9'
 
 # Use mysql as the database for Active Record
-gem 'mysql2', '>= 0.5'
+gem 'mysql2', '>= 0.5', group: [:development, :test]
 gem 'puma', '~> 5.6'
 gem 'sass-rails', '>= 6'
 gem 'uglifier', '>= 4.2'
@@ -25,6 +25,7 @@ gem 'mini_magick'
 gem 'aws-sdk-s3', require: false
 gem 'jquery-rails'
 gem 'rails-i18n'
+gem 'pg', group: :production
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
