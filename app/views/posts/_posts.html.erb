@@ -4,7 +4,7 @@
       <% posts.each do |post| %>
         <%= link_to user_post_path(post.user, post) do %>
           <li class="media p-3 mb-3 border rounded">
-            <%= image_tag("#{post.user.image_url}", size: "60x60", class: "rounded-circle mr-3") %>
+            <%= image_tag(avatar_url(post.user), size: "60x60", class: "rounded-circle mr-3") %>
             <div class="media-body">
               <h5><%= post.user.username %></h5>
               <p><%= simple_format(h(post.content)) %></p>

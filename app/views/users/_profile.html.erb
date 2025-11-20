@@ -1,6 +1,6 @@
 <div class="profile">
   <div class="media p-3 border rounded">
-    <%= link_to image_tag("#{user.image_url}", size: "80x80", class: "rounded-circle mr-3") %>
+    <%= link_to image_tag(avatar_url(user), size: "80x80", class: "rounded-circle mr-3") %>
     <div class="media-body">
       <div class="row">
         <div class="col-md-3">
