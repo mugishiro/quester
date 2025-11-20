@@ -28,7 +28,7 @@ class User < ApplicationRecord
 
   def registered_following_users
     client = User.set_twitter_client(self)
-    uid_array = client.friend_ids.attrs[:ids]
+    uid_array = client.friend_ids.to_a
     User.where(uid: uid_array)
   rescue Twitter::Error => e
     Rails.logger.warn("Unable to fetch friends from Twitter: #{e.class} #{e.message}")

@@ -14,107 +14,27 @@
  *= require_self
  */
 
-body,
-.app-shell {
-  min-height: 100vh;
-  margin: 0;
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
-  background: radial-gradient(circle at top, #f2f5ff 0%, #f7f9ff 45%, #ffffff 100%);
+body {
+  background: #f8f9fb;
   color: #1f2a37;
 }
 
-.app-navbar {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
-}
-
-.app-navbar .brand a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 700;
-  font-size: 1.25rem;
-  color: #111827;
-}
-
-.nav-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-.nav-link-pill {
-  padding: 0.65rem 1.1rem;
-  border-radius: 999px;
-  background: transparent;
-  color: #4b5563;
-  font-weight: 500;
-  transition: all 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-.nav-link-pill.is-active,
-.nav-link-pill:hover {
-  background: #eff4ff;
-  color: #2563eb;
-  text-decoration: none;
-}
-
-.btn-gradient {
-  background: linear-gradient(135deg, #2563eb, #7c3aed);
-  border: none;
-  color: #fff;
-  padding: 0.75rem 1.5rem;
-  border-radius: 999px;
-  font-weight: 600;
-  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.25);
+.content-wrapper {
+  max-width: 760px;
 }
 
 .main {
   background-image: url("back.jpg");
-  background-size: cover;
-  background-attachment: fixed;
-  min-height: calc(100vh - 70px);
-}
-
-.glass-panel {
-  background: rgba(255, 255, 255, 0.92);
-  border-radius: 1.5rem;
-  padding: 2.5rem;
-  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.08);
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-}
-
-.feature-card {
-  border-radius: 1.25rem;
-  padding: 1.75rem;
-  background: #fff;
-  box-shadow: 0 15px 40px rgba(15, 23, 42, 0.06);
-  border: 1px solid rgba(99, 102, 241, 0.08);
-}
-
-a {
-  color: inherit;
 }
 
 .card {
   border: 0;
-  border-radius: 1.25rem;
-  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+a {
+  color: #4b5563;
 }
 
 .nav-tabs .nav-link {
@@ -139,6 +59,15 @@ a {
 
 .share-toolkit .btn-gradient {
   min-width: 220px;
+}
+
+.btn-gradient {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  border: none;
+  color: #fff;
+  padding: 0.65rem 1.35rem;
+  border-radius: 999px;
+  font-weight: 600;
 }
 
 .alert-notice {

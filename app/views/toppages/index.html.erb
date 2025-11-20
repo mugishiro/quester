@@ -1,60 +1,18 @@
-<section class="glass-panel my-5">
-  <div class="row align-items-center">
-    <div class="col-lg-6">
-      <p class="text-uppercase text-primary font-weight-bold mb-2 small">匿名Q&Aプラットフォーム</p>
-      <h1 class="display-5 font-weight-bold mb-4">気になることを、気軽に聞いて、気軽に答える。</h1>
-      <p class="text-muted mb-4">
-        QuesterはTwitterアカウントと連携して使える匿名Q&Aサービスです。
-        あなたのフォロワーからリアルな声を集めたり、誰かの疑問にそっと答えたり。
-        すべての質問・回答がシンプルでクリーンな体験に生まれ変わりました。
-      </p>
-      <div class="d-flex flex-column flex-md-row gap-3 align-items-start align-items-md-center">
-        <%= link_to "Twitterで今すぐはじめる", user_twitter_omniauth_authorize_path,
-            method: :post, class: "btn btn-gradient mb-3 mb-md-0", data: { turbo: false } %>
-        <span class="text-muted small">※ログインにはTwitterアカウントが必要です</span>
-      </div>
-    </div>
-    <div class="col-lg-6 mt-4 mt-lg-0">
-      <div class="p-4 rounded-lg" style="background: radial-gradient(circle at top, #eef2ff, #fdf2ff);">
-        <div class="d-flex flex-column gap-3">
-          <div class="feature-card">
-            <div class="d-flex align-items-center mb-2">
-              <span class="badge badge-pill badge-primary mr-2">STEP 1</span>
-              <strong>ログイン</strong>
-            </div>
-            <p class="mb-0 text-muted">Twitterアカウントで安全にログイン。プロフィール情報を自動で取り込み、すぐに始められます。</p>
-          </div>
-          <div class="feature-card">
-            <div class="d-flex align-items-center mb-2">
-              <span class="badge badge-pill badge-primary mr-2">STEP 2</span>
-              <strong>質問を投稿</strong>
-            </div>
-            <p class="mb-0 text-muted">テキストを入力するだけで、ビジュアル付きの質問カードを自動生成。匿名でリンク共有も可能。</p>
-          </div>
-          <div class="feature-card">
-            <div class="d-flex align-items-center mb-2">
-              <span class="badge badge-pill badge-primary mr-2">STEP 3</span>
-              <strong>回答をチェック</strong>
-            </div>
-            <p class="mb-0 text-muted">回答はあなたにしか見えないプライベートビュー。受け付けのオン/オフもワンタップで切り替えられます。</p>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="signup my-5">
+  <div class="text-center">
+    <h3>Questerは、匿名での回答を募集できるサービスです。</h3>
+    <%= link_to "Twitterで登録/ログイン", user_twitter_omniauth_authorize_path,
+        method: :post, class: "btn btn-primary btn-block py-3 mt-5", data: { turbo: false } %>
   </div>
-</section>
-
-<section class="hero-grid my-5">
-  <div class="feature-card">
-    <h5 class="font-weight-bold mb-3"><i class="fas fa-shield-alt text-primary mr-2"></i> 匿名で安心</h5>
-    <p class="text-muted mb-0">回答はすべて匿名で表示。フォロワーにだけリンクを共有して、カジュアルに声を集められます。</p>
+</div>
+<div class="description my-5">
+  <div class="text-center">
+    <h3 class="my-3">Questerの使い方</h3>
+    <h5>1.登録/ログインする</h5>
+    <p>Twitterアカウントを使って登録/ログインしましょう。</p>
+    <h5>2.質問する</h5>
+    <p>疑問に思うことがあれば、何でも質問してみましょう。</p>
+    <h5>3.回答する</h5>
+    <p>フォローしている方々の質問にも答えてみましょう。<br>回答は匿名なので、気楽に送ってみましょう。</p>
   </div>
-  <div class="feature-card">
-    <h5 class="font-weight-bold mb-3"><i class="fas fa-bolt text-warning mr-2"></i> シンプルな操作</h5>
-    <p class="text-muted mb-0">投稿→確認→公開まで最短3クリック。質問カードは自動でデザインされ、SNSにも映える仕上がりです。</p>
-  </div>
-  <div class="feature-card">
-    <h5 class="font-weight-bold mb-3"><i class="fas fa-heart text-danger mr-2"></i> コミュニティとのつながり</h5>
-    <p class="text-muted mb-0">「友だち」タブからフォロー中のユーザーを見つけて、気になる質問にすぐアクセスできます。</p>
-  </div>
-</section>
+</div>

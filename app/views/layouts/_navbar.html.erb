@@ -1,35 +1,25 @@
-<header class="app-navbar shadow-sm">
-  <div class="brand">
-    <%= link_to root_path do %>
-      <i class="fas fa-comment-dots"></i>
-      <span>Quester</span>
+<ul class="nav justify-content-center align-items-center py-3">
+  <li class="nav-item mr-4">
+    <%= link_to root_path, class: "navbar-brand font-weight-bold text-dark" do %>
+      Quester
     <% end %>
-  </div>
+  </li>
   <% if user_signed_in? %>
-    <nav class="nav-links">
-      <%= link_to toppages_show_path, class: "nav-link-pill #{'is-active' if current_page?(toppages_show_path)}" do %>
-        <i class="fas fa-home"></i>
-        <span>ホーム</span>
-      <% end %>
-      <%= link_to toppages_follows_path, class: "nav-link-pill #{'is-active' if current_page?(toppages_follows_path)}" do %>
-        <i class="fas fa-users"></i>
-        <span>友だち</span>
-      <% end %>
-      <%= link_to user_path(current_user), class: "nav-link-pill" do %>
-        <i class="fas fa-user-circle"></i>
-        <span>マイページ</span>
-      <% end %>
-      <%= link_to toppages_edit_path, class: "nav-link-pill" do %>
-        <i class="fas fa-cog"></i>
-        <span>設定</span>
-      <% end %>
-    </nav>
-    <div class="nav-cta d-none d-md-block">
-      <span class="text-muted small">ようこそ、<%= current_user.username %> さん</span>
-    </div>
+    <li class="nav-item">
+      <%= link_to 'トップページ', toppages_show_path, class: "nav-link px-3 #{'active' if current_page?(toppages_show_path)}" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to '友だち', toppages_follows_path, class: "nav-link px-3 #{'active' if current_page?(toppages_follows_path)}" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to '自分', user_path(current_user), class: "nav-link px-3" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to '設定', toppages_edit_path, class: "nav-link px-3" %>
+    </li>
   <% else %>
-    <div class="nav-cta">
-      <%= link_to "Twitterでログイン", user_twitter_omniauth_authorize_path, method: :post, class: "btn btn-gradient", data: { turbo: false } %>
-    </div>
+    <li class="nav-item">
+      <%= link_to "Twitterでログイン", user_twitter_omniauth_authorize_path, method: :post, class: "btn btn-outline-primary px-4", data: { turbo: false } %>
+    </li>
   <% end %>
-</header>
+</ul>
