@@ -8,12 +8,12 @@
         <%= simple_format(h(@post.content)) %>
       </div>
       <%= f.hidden_field :content, value: @post.content %>
+      <div class="share-hint my-3 p-3 rounded bg-light text-left">
+        <h6 class="font-weight-bold mb-2"><i class="fas fa-share mr-1 text-primary"></i>共有のヒント</h6>
+        <p class="mb-2 text-muted small">投稿後に「Twitterで共有」ボタンと質問リンクのコピー機能が表示されます。自動投稿は行われないため、安心して質問を作成できます。</p>
+      </div>
       <%= f.submit '送信する', class: 'btn btn-info btn-block' %>
       <%= f.submit 'キャンセル', name: 'back', class: 'btn btn-light btn-block' %>
-      <%= f.label :tweet, class: "checkbox inline mt-3" do %>
-        <%= f.check_box :tweet %>
-        <span>質問をツイートする</span>
-      <% end %>
     <% end %>
   </div>
 </div>

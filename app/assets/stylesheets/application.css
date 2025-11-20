@@ -133,6 +133,14 @@ a {
   gap: 1rem;
 }
 
+.share-link-group {
+  min-width: 260px;
+}
+
+.share-toolkit .btn-gradient {
+  min-width: 220px;
+}
+
 .alert-notice {
   color: #155724;
   background-color: #d4edda;
