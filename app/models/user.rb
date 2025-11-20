@@ -33,9 +33,15 @@ class User < ApplicationRecord
   end
 
   def self.set_twitter_client(user)
+    twitter_credentials = Rails.application.credentials[:twitter] || {}
+    consumer_key = ENV['TWITTER_CONSUMER_KEY'] || twitter_credentials[:consumer_key]
+    consumer_secret = ENV['TWITTER_CONSUMER_SECRET'] || twitter_credentials[:consumer_secret]
+    unless consumer_key.present? && consumer_secret.present?
+      raise "Twitter API credentials are not configured"
+    end
     Twitter::REST::Client.new do |config|
-      config.consumer_key = Rails.application.credentials.twitter[:consumer_key]
-      config.consumer_secret = Rails.application.credentials.twitter[:consumer_secret]
+      config.consumer_key = consumer_key
+      config.consumer_secret = consumer_secret
       config.access_token = user.access_token
       config.access_token_secret = user.access_secret
     end
