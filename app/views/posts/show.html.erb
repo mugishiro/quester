@@ -14,7 +14,7 @@
   <div class="share-toolkit card my-4">
     <div class="card-body d-flex flex-column flex-md-row align-items-md-center justify-content-between">
       <div class="share-actions w-100 w-md-auto d-flex flex-column flex-md-row gap-2">
-        <%= link_to "Xで共有", "https://twitter.com/intent/tweet?text=#{ERB::Util.url_encode("#{@user.username}さんの質問です #MyQuestion")}&url=#{CGI.escape(request.original_url)}",
+        <%= link_to "Xで共有", "https://x.com/intent/post?text=#{ERB::Util.url_encode("#{@user.username}さんの質問です #MyQuestion")}&url=#{CGI.escape(request.original_url)}",
             class: "btn btn-solid-primary text-center w-100", target: "_blank", rel: "noopener", data: { turbo: false } %>
       </div>
     </div>
