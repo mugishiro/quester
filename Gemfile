@@ -9,7 +9,7 @@ gem 'rails', '~> 7.1.5', '>= 7.1.5.2'
 gem 'mysql2', '>= 0.5', group: [:development, :test]
 gem 'puma', '~> 5.6'
 gem 'sass-rails', '>= 6'
-gem 'uglifier', '>= 4.2'
+gem 'uglifier', '>= 4.2', require: false
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.4.4', require: false
