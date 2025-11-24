@@ -12,24 +12,9 @@
 <% if is_owner %>
   <div class="share-toolkit card my-4">
     <div class="card-body d-flex flex-column flex-md-row align-items-md-center justify-content-between">
-      <div class="mb-3 mb-md-0">
-        <h5 class="mb-1 font-weight-bold">シェアして回答を集めましょう</h5>
-        <p class="text-muted small mb-0">Twitterでシェアしてフォロワーに質問を届けられます。</p>
-      </div>
       <div class="share-actions w-100 w-md-auto d-flex flex-column flex-md-row gap-2">
         <%= link_to "Twitterで共有", "https://twitter.com/intent/tweet?text=#{ERB::Util.url_encode("#{@user.username}さんの質問です #MyQuestion")}&url=#{CGI.escape(request.original_url)}",
             class: "btn btn-solid-primary text-center w-100", target: "_blank", rel: "noopener", data: { turbo: false } %>
-      </div>
-    </div>
-  </div>
-  <div class="card my-4">
-    <div class="card-body">
-      <div class="media">
-        <%= image_tag(avatar_url(@user), size: "80x80", class: "rounded-circle mr-3", loading: "lazy") %>
-        <div class="media-body">
-          <h5 class="mb-2"><%= @user.username %></h5>
-          <p class="mb-0"><%= simple_format(h(@post.content)) %></p>
-        </div>
       </div>
     </div>
   </div>
