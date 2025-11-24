@@ -6,8 +6,8 @@
         <li class="media p-3 mb-3 border rounded">
           <%= image_tag(avatar_url(post.user), size: "60x60", class: "rounded-circle mr-3", loading: "lazy") %>
           <div class="media-body">
-            <h5><%= post.user.username %></h5>
-            <p><%= simple_format(h(post.content)) %></p>
+            <h5 class="font-weight-bold mb-1"><%= post.user.username %></h5>
+            <p class="post-body-clamp text-muted mb-0"><%= simple_format(h(post.content)) %></p>
           </div>
         </li>
       <% end %>

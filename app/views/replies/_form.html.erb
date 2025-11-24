@@ -1,10 +1,12 @@
 <div class="card-body">
   <%= form_with(model: reply, local: true, url: confirm_new_reply_path) do |f| %>
+    <%= f.hidden_field :post_id, value: post.id %>
     <div class="js-text-wrapper">
       <%= f.text_area :content, class: 'form-control js-text', rows: 8, maxlength: 1000, style: "resize: none;" %>
-      <%= f.hidden_field :post_id, value: post.id %>
-      <p class="js-text-count pull-right text-right"></p>
+      <div class="form-footer d-flex align-items-center justify-content-between mt-2">
+        <%= f.submit '回答する', class: 'btn btn-info px-4 py-2' %>
+        <span class="js-text-count text-muted small"></span>
+      </div>
     </div>
-    <%= f.submit '回答する', class: 'btn btn-info btn-block p-3 mt-3' %>
   <% end %>
 </div>
