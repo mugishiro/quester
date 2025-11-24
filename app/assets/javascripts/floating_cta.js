@@ -1,20 +1,33 @@
 // Floating CTA: show after scroll on desktop, always show on mobile
 (function () {
   var button;
+  var postPath;
+
+  function resolvePath() {
+    var bodyPath = document.body ? document.body.dataset.newPostPath : null;
+    if (bodyPath && bodyPath.length > 0) {
+      postPath = bodyPath;
+    }
+    return postPath;
+  }
+
   function ensureButton() {
     if (button && !document.body.contains(button)) {
       button = null;
     }
-    if (button) return;
+    if (button) {
+      button.href = resolvePath() || "#";
+      return;
+    }
     button = document.createElement("a");
-    button.href = document.body.dataset.newPostPath || "#";
+    button.href = resolvePath() || "#";
     button.className = "floating-cta";
     button.innerHTML = '<span class="floating-cta__icon">＋</span><span class="floating-cta__label">質問する</span>';
     document.body.appendChild(button);
   }
 
   function toggleButton() {
-    if (!document.body.dataset.newPostPath) {
+    if (!resolvePath()) {
       if (button) button.classList.remove("is-visible");
       return;
     }
@@ -29,6 +42,7 @@
   }
 
   document.addEventListener("turbolinks:load", function () {
+    resolvePath();
     toggleButton();
   });
   window.addEventListener("scroll", toggleButton);
