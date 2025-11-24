@@ -3,9 +3,9 @@
     <%= f.hidden_field :post_id, value: post.id %>
     <div class="js-text-wrapper">
       <%= f.text_area :content, class: 'form-control js-text', rows: 8, maxlength: 1000, style: "resize: none;" %>
-      <div class="form-footer d-flex align-items-center justify-content-between mt-2">
+      <div class="form-footer d-flex align-items-center justify-content-end mt-2">
+        <span class="js-text-count text-muted small mr-2"></span>
         <%= f.submit '回答する', class: 'btn btn-info px-4 py-2' %>
-        <span class="js-text-count text-muted small"></span>
       </div>
     </div>
   <% end %>

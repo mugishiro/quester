@@ -1,16 +1,14 @@
 <div class="toppage-profile card my-5">
   <div class="card-body">
-    <%= render 'users/profile', user: current_user %>
-    <%= link_to "自分の質問を見る", user_path(current_user), class: "btn btn-secondary btn-block mt-3" %>
-  </div>
-</div>
-<div class="form my-5">
-  <div class="text-center">
-    <h1>質問する</h1>
-    <p>新しく質問を投稿します。何でも聞いてみましょう。</p>
-  </div>
-  <div class="form-group card">
-    <%= render 'posts/form', user: current_user, post: @post %>
+    <div class="d-flex flex-wrap gap-3 align-items-center justify-content-between">
+      <div class="flex-fill">
+        <%= render 'users/profile', user: current_user %>
+      </div>
+      <div class="d-flex flex-column gap-2 w-100 w-md-auto">
+        <%= link_to "質問する", new_user_post_path(current_user), class: "btn btn-solid-primary btn-block" %>
+        <%= link_to "自分の質問を見る", user_path(current_user), class: "btn btn-ghost btn-block" %>
+      </div>
+    </div>
   </div>
 </div>
 <div class="other-posts my-5">

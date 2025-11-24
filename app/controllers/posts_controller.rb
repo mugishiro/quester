@@ -1,12 +1,17 @@
 class PostsController < ApplicationController
   before_action :require_user_logged_in, only: [:confirm_new, :create, :update, :destroy]
   before_action :correct_user, only: [:confirm_new, :create, :update, :destroy]
+  before_action :require_user_logged_in, only: [:new]
 
   def show
     @post = Post.find(params[:id])
     @user = @post.user
     @reply = Reply.new
     @replies = @post.replies if @user == current_user
+  end
+
+  def new
+    @post = current_user.posts.build
   end
 
   def confirm_new

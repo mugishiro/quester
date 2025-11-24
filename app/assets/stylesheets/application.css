@@ -128,6 +128,12 @@ a {
   text-align: right;
 }
 
+.post-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
 @media (max-width: 576px) {
   .content-wrapper {
     padding-left: 0.75rem;

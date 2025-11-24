@@ -12,6 +12,9 @@
     <li class="nav-item">
       <%= link_to '設定', toppages_edit_path, class: "nav-link px-3" %>
     </li>
+    <li class="nav-item">
+      <%= link_to '質問する', new_user_post_path(current_user), class: "btn btn-solid-primary px-4 py-2" %>
+    </li>
   <% else %>
     <li class="nav-item">
       <%= link_to "Xでログイン", user_twitter_omniauth_authorize_path, method: :post, class: "btn btn-outline-primary px-4", data: { turbo: false } %>

@@ -17,7 +17,7 @@
 //= require jquery
 //= require jquery_ujs
 
-$(function () {
+$(document).on('turbolinks:load', function () {
   var MAX_CHARS = 1000;
 
   function updateCounter($area) {
