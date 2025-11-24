@@ -1,13 +1,14 @@
 require 'rails_helper'
 
 RSpec.feature "Replies", type: :feature do
-  let!(:user) { create(:user) }
-  let!(:post) { create(:post, user: user) }
+  let!(:post_owner) { create(:user) }
+  let!(:responder) { create(:user) }
+  let!(:post) { create(:post, user: post_owner) }
 
   describe "create a new reply" do
     before do
-      sign_in user
-      visit user_post_path user.nickname, post.id
+      sign_in responder
+      visit user_post_path post_owner.nickname, post.id
     end
 
     context "with valid attributes" do

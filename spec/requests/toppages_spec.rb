@@ -7,7 +7,7 @@ RSpec.describe "Toppages", type: :request do
     create(:post, content: "openpost", user: user)
   end
   let!(:other_open_post) do
-    create(:post, content: "other openpost", user: other_user)
+    create(:post, content: "other user question", user: other_user)
   end
   let!(:closed_post) do
     create(:post, status: false, content: "closedpost", user: user)
