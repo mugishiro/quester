@@ -1,4 +1,4 @@
-<ul class="nav navbar-top justify-content-center align-items-center py-3">
+<ul class="nav navbar-top justify-content-start align-items-center py-3">
   <li class="nav-item mr-4">
     <%= link_to(guide_path, class: "navbar-brand font-weight-bold text-dark d-inline-flex align-items-center") do %>
       <%= image_tag asset_path('favicon.png'), size: "24x24", class: "mr-2" %>
@@ -17,7 +17,7 @@
         <i class="fas fa-cog"></i>
       <% end %>
     </li>
-    <li class="nav-item">
+    <li class="nav-item ml-auto">
       <%= link_to '質問する', new_user_post_path(current_user), class: "btn btn-solid-primary px-3 py-2" %>
     </li>
   <% else %>

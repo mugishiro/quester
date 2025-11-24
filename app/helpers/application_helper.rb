@@ -1,6 +1,6 @@
 module ApplicationHelper
   def default_meta_tags
-    title = content_for?(:title) ? yield(:title) : 'Quester - 匿名で質問を集めよう'
+    title = content_for?(:title) ? yield(:title) : 'Quester'
     description = content_for?(:description) ? yield(:description) : '匿名で質問を募り、回答を集めるためのサービスです。'
     current_url = request.original_url
     share_image = image_url('default.png')
@@ -8,7 +8,7 @@ module ApplicationHelper
     favicon_shortcut = ActionController::Base.helpers.asset_path('favicon.png')
 
     {
-      site: 'Quester',
+      site: nil,
       title: title,
       description: description,
       charset: 'utf-8',

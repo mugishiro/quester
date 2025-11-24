@@ -12,20 +12,27 @@
 <script>
   (function () {
     var MAX = 1000;
-    function wireCounter(wrapper) {
-      if (!wrapper) return;
-      var area = wrapper.querySelector('.js-text');
-      var counter = wrapper.querySelector('.js-text-count');
-      if (!area || !counter) return;
-      function tick() {
-        var count = (area.value || '').replace(/\n/g, '改行').length;
-        counter.textContent = count + '/' + MAX;
-        counter.style.color = count > MAX ? 'red' : 'black';
-      }
-      ['input','change','keyup'].forEach(function(ev){ area.addEventListener(ev, tick); });
-      tick();
+    function bindCounters() {
+      document.querySelectorAll('.js-text-wrapper').forEach(function (wrapper) {
+        var area = wrapper.querySelector('.js-text');
+        var counter = wrapper.querySelector('.js-text-count');
+        if (!area || !counter) return;
+        function tick() {
+          var count = (area.value || '').replace(/\n/g, '改行').length;
+          counter.textContent = count + '/' + MAX;
+          counter.style.color = count > MAX ? 'red' : 'black';
+        }
+        ['input', 'change', 'keyup'].forEach(function (ev) {
+          area.addEventListener(ev, tick);
+        });
+        tick();
+      });
     }
-    document.addEventListener('DOMContentLoaded', function(){ wireCounter(document.currentScript.previousElementSibling); });
-    document.addEventListener('turbolinks:load', function(){ wireCounter(document.currentScript.previousElementSibling); });
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', bindCounters);
+    } else {
+      bindCounters();
+    }
+    document.addEventListener('turbolinks:load', bindCounters);
   })();
 </script>
