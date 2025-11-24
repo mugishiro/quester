@@ -8,7 +8,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def failure
-    flash[:danger] = "Twitterログインに失敗しました。もう一度お試しください。"
+    flash[:danger] = "Xログインに失敗しました。もう一度お試しください。"
     redirect_to root_path
   end
 

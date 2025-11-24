@@ -35,7 +35,7 @@ class PostsController < ApplicationController
           client.update(text)
         rescue Twitter::Error => e
           Rails.logger.warn("Twitter share failed: #{e.class} #{e.message}")
-          flash[:warning] = '質問は投稿されましたが、Twitterへの共有に失敗しました。'
+        flash[:warning] = '質問は投稿されましたが、Xへの共有に失敗しました。'
         end
       end
       redirect_to user_post_path(current_user, @post)
