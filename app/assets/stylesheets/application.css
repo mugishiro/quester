@@ -121,6 +121,13 @@ a {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
 }
 
+.navbar-top .nav-link,
+.navbar-top .btn {
+  font-size: 0.95rem;
+  padding-top: 0.35rem;
+  padding-bottom: 0.35rem;
+}
+
 .post-body-clamp {
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -154,6 +161,10 @@ html {
   font-weight: 600;
   font-size: 1rem;
   color: #2563eb !important;
+}
+
+.post-author-link .icon {
+  font-size: 1.1rem;
 }
 
 @media (max-width: 576px) {

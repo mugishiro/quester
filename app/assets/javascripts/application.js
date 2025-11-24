@@ -10,34 +10,37 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
 
-$(document).on('turbolinks:load', function () {
+(function () {
   var MAX_CHARS = 1000;
 
-  function updateCounter($area) {
-    var count = ($area.val() || "").replace(/\n/g, "改行").length;
-    var $counter = $area.closest(".js-text-wrapper").find(".js-text-count");
-    if (!$counter.length) return;
-
-    $counter.text(count + "/" + MAX_CHARS);
-    if (count > MAX_CHARS) {
-      $counter.css("color", "red");
-    } else {
-      $counter.css("color", "black");
-    }
+  function updateCounter(area) {
+    if (!area) return;
+    var count = (area.value || "").replace(/\n/g, "改行").length;
+    var wrapper = area.closest(".js-text-wrapper");
+    if (!wrapper) return;
+    var counter = wrapper.querySelector(".js-text-count");
+    if (!counter) return;
+    counter.textContent = count + "/" + MAX_CHARS;
+    counter.style.color = count > MAX_CHARS ? "red" : "black";
   }
 
-  $(".js-text").each(function () {
-    var $area = $(this);
-    updateCounter($area);
-    $area.on("keyup input change", function () {
-      updateCounter($area);
+  function bindCounters() {
+    var areas = document.querySelectorAll(".js-text");
+    areas.forEach(function (area) {
+      updateCounter(area);
+      ["keyup", "input", "change"].forEach(function (ev) {
+        area.addEventListener(ev, function () {
+          updateCounter(area);
+        });
+      });
     });
-  });
-});
+  }
+
+  document.addEventListener("DOMContentLoaded", bindCounters);
+  document.addEventListener("turbolinks:load", bindCounters);
+})();
