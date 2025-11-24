@@ -30,5 +30,35 @@
         <%= yield %>
       </div>
     </div>
+    <% if user_signed_in? %>
+      <script>
+        (function () {
+          var path = "<%= j new_user_post_path(current_user) %>";
+          var btn = document.getElementById("floating-cta");
+          if (!btn) {
+            btn = document.createElement("a");
+            btn.id = "floating-cta";
+            btn.className = "floating-cta";
+            btn.innerHTML = '<span class="floating-cta__icon">＋</span><span class="floating-cta__label">質問する</span>';
+            document.body.appendChild(btn);
+          }
+          function toggle() {
+            var isMobile = window.matchMedia("(max-width: 768px)").matches;
+            var scrolled = window.pageYOffset > 120;
+            if (isMobile || scrolled) {
+              btn.href = path;
+              btn.classList.add("is-visible");
+            } else {
+              btn.classList.remove("is-visible");
+            }
+          }
+          ["load", "scroll", "resize"].forEach(function (ev) {
+            window.addEventListener(ev, toggle);
+          });
+          document.addEventListener("turbolinks:load", toggle);
+          toggle();
+        })();
+      </script>
+    <% end %>
   </body>
 </html>
