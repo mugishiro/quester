@@ -61,15 +61,6 @@ a {
   min-width: 220px;
 }
 
-.btn-gradient {
-  background: linear-gradient(135deg, #2563eb, #7c3aed);
-  border: none;
-  color: #fff;
-  padding: 0.65rem 1.35rem;
-  border-radius: 999px;
-  font-weight: 600;
-}
-
 .alert-notice {
   color: #155724;
   background-color: #d4edda;
@@ -98,4 +89,51 @@ a {
 
 .posts-card .posts-list ul {
   margin-bottom: 0;
+}
+
+.btn-solid-primary {
+  background-color: #2563eb;
+  color: #fff !important;
+  border: 1px solid #1d4ed8;
+  border-radius: 0.75rem;
+  padding: 0.6rem 1.4rem;
+  font-weight: 600;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-solid-primary:hover {
+  background-color: #1d4ed8;
+  color: #fff !important;
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.25);
+}
+
+.btn-solid-danger {
+  background-color: #dc2626;
+  color: #fff !important;
+  border: 1px solid #b91c1c;
+  border-radius: 0.75rem;
+  padding: 0.6rem 1.4rem;
+  font-weight: 600;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-solid-danger:hover {
+  background-color: #b91c1c;
+  color: #fff !important;
+  box-shadow: 0 10px 20px rgba(220, 38, 38, 0.22);
+}
+
+.btn-ghost {
+  background-color: #f8fafc;
+  color: #0f172a !important;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  padding: 0.6rem 1.4rem;
+  font-weight: 600;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-ghost:hover {
+  background-color: #e2e8f0;
+  border-color: #cbd5e1;
 }

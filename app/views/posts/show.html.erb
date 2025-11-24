@@ -5,7 +5,7 @@
     image: share_image
  } %>
 
-<%= image_tag(@post.image, width: "690", class: "img-fluid shadow-lg rounded-4") if @post.image.attached? %>
+<%= image_tag(@post.image, width: "690", class: "img-fluid shadow-lg rounded-4", loading: "lazy") if @post.image.attached? %>
 
 <% is_owner = current_user == @user %>
 
@@ -18,14 +18,14 @@
       </div>
       <div class="share-actions w-100 w-md-auto d-flex flex-column flex-md-row gap-2">
         <%= link_to "Twitterで共有", "https://twitter.com/intent/tweet?text=#{ERB::Util.url_encode("#{@user.username}さんの質問です #MyQuestion")}&url=#{CGI.escape(request.original_url)}",
-            class: "btn btn-gradient text-center w-100", target: "_blank", rel: "noopener", data: { turbo: false } %>
+            class: "btn btn-solid-primary text-center w-100", target: "_blank", rel: "noopener", data: { turbo: false } %>
       </div>
     </div>
   </div>
   <div class="card my-4">
     <div class="card-body">
       <div class="media">
-        <%= image_tag(avatar_url(@user), size: "80x80", class: "rounded-circle mr-3") %>
+        <%= image_tag(avatar_url(@user), size: "80x80", class: "rounded-circle mr-3", loading: "lazy") %>
         <div class="media-body">
           <h5 class="mb-2"><%= @user.username %></h5>
           <p class="mb-0"><%= simple_format(h(@post.content)) %></p>
@@ -39,7 +39,7 @@
   <div class="toppage-profile card my-5">
     <div class="card-body">
       <div class="media p-3 border rounded">
-        <%= link_to image_tag(avatar_url(@user), size: "80x80", class: "rounded-circle mr-3"),
+        <%= link_to image_tag(avatar_url(@user), size: "80x80", class: "rounded-circle mr-3", loading: "lazy"),
             user_path(@user) %>
         <div class="media-body">
           <h5><%= @user.username %></h5>
