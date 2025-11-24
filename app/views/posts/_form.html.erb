@@ -1,7 +1,7 @@
 <div class="card-body">
   <%= form_with(model: [user, post], local: true, url: confirm_new_user_post_path(current_user)) do |f| %>
     <div class="js-text-wrapper">
-      <%= f.text_area :content, class: 'form-control js-text', rows: 8, maxlength: 1000 %>
+      <%= f.text_area :content, class: 'form-control js-text', rows: 8, maxlength: 1000, style: "resize: none;" %>
       <p class="js-text-count pull-right text-right"></p>
     </div>
     <%= f.submit '質問する', class: 'btn btn-info btn-block p-3 mt-3' %>

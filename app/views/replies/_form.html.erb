@@ -1,7 +1,7 @@
 <div class="card-body">
   <%= form_with(model: reply, local: true, url: confirm_new_reply_path) do |f| %>
     <div class="js-text-wrapper">
-      <%= f.text_area :content, class: 'form-control js-text', rows: 8, maxlength: 1000 %>
+      <%= f.text_area :content, class: 'form-control js-text', rows: 8, maxlength: 1000, style: "resize: none;" %>
       <%= f.hidden_field :post_id, value: post.id %>
       <p class="js-text-count pull-right text-right"></p>
     </div>
