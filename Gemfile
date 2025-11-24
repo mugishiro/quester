@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '~> 3.1.0'
 
-gem 'rails', '~> 6.1.7', '>= 6.1.7.9'
+gem 'rails', '~> 7.1.5', '>= 7.1.5.2'
 
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.5', group: [:development, :test]
