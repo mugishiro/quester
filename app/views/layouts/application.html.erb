@@ -18,7 +18,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
   </head>
 
-  <body>
+  <body data-new-post-path="<%= new_user_post_path(current_user) if user_signed_in? %>">
     <div class="bg-white border-bottom header-sticky">
       <div class="container content-wrapper py-2">
         <%= render 'layouts/navbar' %>
