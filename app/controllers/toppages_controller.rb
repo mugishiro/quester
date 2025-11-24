@@ -4,7 +4,7 @@ class ToppagesController < ApplicationController
   def index
     if user_signed_in?
       @post = current_user.posts.build
-      @open_posts = Post.includes(:user).where(status: true).order(id: :desc).page(params[:page])
+      @open_posts = open_posts_for_feed
       render :action => "show"
     else
       render :index
@@ -13,7 +13,7 @@ class ToppagesController < ApplicationController
 
   def show
     @post = current_user.posts.build
-    @open_posts = Post.includes(:user).where(status: true).order(id: :desc).page(params[:page])
+    @open_posts = open_posts_for_feed
   end
 
   def follows
@@ -26,5 +26,15 @@ class ToppagesController < ApplicationController
 
   def guide
     render :index
+  end
+
+  private
+
+  def open_posts_for_feed
+    Post.includes(:user)
+        .where(status: true)
+        .where.not(user_id: current_user.id)
+        .order(id: :desc)
+        .page(params[:page])
   end
 end
