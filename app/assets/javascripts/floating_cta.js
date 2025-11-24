@@ -2,6 +2,9 @@
 (function () {
   var button;
   function ensureButton() {
+    if (button && !document.body.contains(button)) {
+      button = null;
+    }
     if (button) return;
     button = document.createElement("a");
     button.href = document.body.dataset.newPostPath || "#";
@@ -11,6 +14,10 @@
   }
 
   function toggleButton() {
+    if (!document.body.dataset.newPostPath) {
+      if (button) button.classList.remove("is-visible");
+      return;
+    }
     var isMobile = window.matchMedia("(max-width: 768px)").matches;
     var scrolled = window.pageYOffset > 120;
     if (isMobile || scrolled) {
