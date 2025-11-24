@@ -42,10 +42,7 @@
     </div>
   <% end %>
   <div class="d-flex justify-content-end mb-3">
-    <%= link_to user_path(@user), class: "btn btn-ghost post-author-link mb-0" do %>
-      <span><%= @user.username %>さんのページへ</span>
-      <i class="fab fa-twitter icon"></i>
-    <% end %>
+    <%= link_to "#{@user.username}さんのページへ", user_path(@user), class: "btn btn-ghost post-author-link mb-0" %>
   </div>
 
   <div class="reply">
