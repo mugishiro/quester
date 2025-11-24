@@ -5,6 +5,7 @@ module ApplicationHelper
     current_url = request.original_url
     share_image = image_url('default.png')
     favicon_path = image_url('favicon.png')
+    favicon_shortcut = ActionController::Base.helpers.asset_path('favicon.png')
 
     {
       site: 'Quester',
@@ -13,8 +14,8 @@ module ApplicationHelper
       charset: 'utf-8',
       canonical: current_url,
       icon: [
-        { href: favicon_path },
-        { href: image_url('favicon.ico'), rel: 'shortcut icon', type: 'image/x-icon' },
+        { href: favicon_path, rel: 'icon', type: 'image/png' },
+        { href: favicon_shortcut, rel: 'shortcut icon', type: 'image/png' },
       ],
       og: {
         type: 'website',

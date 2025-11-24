@@ -39,7 +39,7 @@ jobs:
           bundler-cache: true
 
       - name: Install system dependencies
-        run: sudo apt-get update && sudo apt-get install -y libmysqlclient-dev
+        run: sudo apt-get update && sudo apt-get install -y libmysqlclient-dev imagemagick
 
       - name: Prepare database
         run: |
