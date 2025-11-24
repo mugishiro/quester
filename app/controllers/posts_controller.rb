@@ -22,7 +22,7 @@ class PostsController < ApplicationController
     @open_posts = Post.where(status: true).order(id: :desc).page(params[:page])
 
     if params[:back].present?
-      render 'toppages/show'
+      render 'posts/new'
       return
     end
 

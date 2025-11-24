@@ -43,7 +43,7 @@ RSpec.feature "Posts", type: :feature do
         expect do
           click_button "back"
         end.not_to change(user.posts, :count)
-        expect(page).to have_content "test post"
+        expect(page).to have_content "質問する"
       end
     end
   end
