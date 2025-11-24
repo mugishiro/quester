@@ -7,55 +7,64 @@
 
 <%= image_tag(@post.image, width: "690", class: "img-fluid shadow-lg rounded-4") if @post.image.attached? %>
 
-<% if current_user == @user %>
+<% is_owner = current_user == @user %>
+
+<% if is_owner %>
   <div class="share-toolkit card my-4">
     <div class="card-body d-flex flex-column flex-md-row align-items-md-center justify-content-between">
       <div class="mb-3 mb-md-0">
         <h5 class="mb-1 font-weight-bold">シェアして回答を集めましょう</h5>
-        <p class="text-muted small mb-0">リンクのコピーやTwitterシェアでフォロワーに質問を届けられます。</p>
+        <p class="text-muted small mb-0">Twitterでシェアしてフォロワーに質問を届けられます。</p>
       </div>
       <div class="share-actions w-100 w-md-auto d-flex flex-column flex-md-row gap-2">
-        <div class="input-group share-link-group">
-          <input type="text" class="form-control share-url-input" value="<%= request.original_url %>" readonly>
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary js-copy-link" type="button"><i class="fas fa-copy mr-1"></i>コピー</button>
-          </div>
-        </div>
         <%= link_to "Twitterで共有", "https://twitter.com/intent/tweet?text=#{ERB::Util.url_encode("#{@user.username}さんの質問です #MyQuestion")}&url=#{CGI.escape(request.original_url)}",
-            class: "btn btn-gradient text-center", target: "_blank", rel: "noopener", data: { turbo: false } %>
+            class: "btn btn-gradient text-center w-100", target: "_blank", rel: "noopener", data: { turbo: false } %>
+      </div>
+    </div>
+  </div>
+  <div class="card my-4">
+    <div class="card-body">
+      <div class="media">
+        <%= image_tag(avatar_url(@user), size: "80x80", class: "rounded-circle mr-3") %>
+        <div class="media-body">
+          <h5 class="mb-2"><%= @user.username %></h5>
+          <p class="mb-0"><%= simple_format(h(@post.content)) %></p>
+        </div>
       </div>
     </div>
   </div>
 <% end %>
 
-<div class="toppage-profile card my-5">
-  <div class="card-body">
-    <div class="media p-3 border rounded">
-      <%= link_to image_tag(avatar_url(@user), size: "80x80", class: "rounded-circle mr-3"),
-          user_path(@user) %>
-      <div class="media-body">
-        <h5><%= @user.username %></h5>
-        <p><%= simple_format(h(@post.content)) %></p>
+<% unless is_owner %>
+  <div class="toppage-profile card my-5">
+    <div class="card-body">
+      <div class="media p-3 border rounded">
+        <%= link_to image_tag(avatar_url(@user), size: "80x80", class: "rounded-circle mr-3"),
+            user_path(@user) %>
+        <div class="media-body">
+          <h5><%= @user.username %></h5>
+          <p><%= simple_format(h(@post.content)) %></p>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="reply">
-  <div class="text-center">
-    <h1>回答する</h1>
-    <p><%= @user.username %>さんの質問に回答します。回答は匿名で送られます。</p>
+  <div class="reply">
+    <div class="text-center">
+      <h1>回答する</h1>
+      <p><%= @user.username %>さんの質問に回答します。回答は匿名で送られます。</p>
+    </div>
+    <div class="form-group card">
+      <% if @post.status %>
+        <%= render 'replies/form', reply: @reply, post: @post %>
+      <% else %>
+        <div class="card-body text-center">
+          この質問への回答は締め切られました。
+        </div>
+      <% end %>
+    </div>
   </div>
-  <div class="form-group card">
-    <% if @post.status %>
-      <%= render 'replies/form', reply: @reply, post: @post %>
-    <% else %>
-      <div class="card-body text-center">
-        この質問への回答は締め切られました。
-      </div>
-    <% end %>
-  </div>
-</div>
+<% end %>
 
 <% if @user == current_user %>
   <div class="change text-center my-5">

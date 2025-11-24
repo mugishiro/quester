@@ -1,13 +1,11 @@
 <ul class="nav justify-content-center align-items-center py-3">
   <li class="nav-item mr-4">
-    <%= link_to root_path, class: "navbar-brand font-weight-bold text-dark" do %>
+    <%= link_to(user_signed_in? ? toppages_show_path : root_path, class: "navbar-brand font-weight-bold text-dark d-inline-flex align-items-center") do %>
+      <%= image_tag "favicon.ico", size: "24x24", class: "mr-2" %>
       Quester
     <% end %>
   </li>
   <% if user_signed_in? %>
-    <li class="nav-item">
-      <%= link_to 'トップページ', toppages_show_path, class: "nav-link px-3 #{'active' if current_page?(toppages_show_path)}" %>
-    </li>
     <li class="nav-item">
       <%= link_to '自分', user_path(current_user), class: "nav-link px-3" %>
     </li>

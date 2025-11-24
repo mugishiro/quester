@@ -1,7 +1,7 @@
 <div class="logout mb-5 text-center">
   <h1>ログアウト</h1>
   <%= link_to "ログアウト", destroy_user_session_path, method: :delete,
-      class: "btn btn-outline-secondary btn-block py-3" %>
+      class: "btn btn-gradient btn-block py-3" %>
 </div>
 <div class="withdraw my-5 text-center">
   <h1>退会</h1>
@@ -9,5 +9,5 @@
     なお、退会すると今までの質問がすべて削除されますのでご注意ください。</p>
   <%= link_to "退会する", registration_path,
     data: { confirm: "本当に退会しますか？" }, method: :delete,
-    class: "btn btn-outline-danger btn-block py-3" %>
+    class: "btn btn-gradient btn-block py-3" %>
 </div>

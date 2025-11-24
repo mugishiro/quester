@@ -1,19 +1,30 @@
-<div class="card posts-card">
-  <div class="card-body">
-    <ul class="list-unstyled" >
-      <% posts.each do |post| %>
-        <%= link_to user_post_path(post.user, post) do %>
-          <li class="media p-3 mb-3 border rounded">
-            <%= image_tag(avatar_url(post.user), size: "60x60", class: "rounded-circle mr-3") %>
-            <div class="media-body">
-              <h5><%= post.user.username %></h5>
-              <p><%= simple_format(h(post.content)) %></p>
-              <p class="text-right m-0">回答する</p>
-            </div>
-          </li>
-        <% end %>
+<% cardless = local_assigns[:cardless] %>
+<% content = capture do %>
+  <ul class="list-unstyled">
+    <% posts.each do |post| %>
+      <%= link_to user_post_path(post.user, post) do %>
+        <li class="media p-3 mb-3 border rounded">
+          <%= image_tag(avatar_url(post.user), size: "60x60", class: "rounded-circle mr-3") %>
+          <div class="media-body">
+            <h5><%= post.user.username %></h5>
+            <p><%= simple_format(h(post.content)) %></p>
+            <p class="text-right m-0">回答する</p>
+          </div>
+        </li>
       <% end %>
-      <%= paginate posts %>
-    </ul>
+    <% end %>
+    <%= paginate posts %>
+  </ul>
+<% end %>
+
+<% if cardless %>
+  <div class="posts-list">
+    <%= content %>
   </div>
-</div>
+<% else %>
+  <div class="card posts-card">
+    <div class="card-body">
+      <%= content %>
+    </div>
+  </div>
+<% end %>

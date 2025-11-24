@@ -84,14 +84,18 @@ a {
 
 .tabs-compact {
   margin-bottom: 0;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .tabs-compact .nav-link {
-  border-radius: 0;
+  border-radius: 0.75rem 0.75rem 0 0;
+  margin: 0 0.25rem;
 }
 
-.tabs-compact + .posts-card {
-  margin-top: -1px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+.posts-card .card-header {
+  border-bottom: 0;
+}
+
+.posts-card .posts-list ul {
+  margin-bottom: 0;
 }

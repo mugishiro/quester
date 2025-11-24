@@ -4,19 +4,25 @@
   </div>
 </div>
 <div class="other-posts my-3">
-  <div class="text-center">
+  <div class="text-center mb-3">
     <h1>過去の質問</h1>
     <p><%= user.username %>さんの質問です</p>
   </div>
-  <ul class="nav nav-tabs nav-fill tabs-compact">
-    <% case controller.action_name %>
-    <% when "show" %>
-      <li class="nav-item"><%= link_to "回答受付中", user_path(user), class: "nav-link active" %></li>
-      <li class="nav-item"><%= link_to "回答締め切り", closed_posts_path(user), class: "nav-link" %></li>
-    <% when "closed" %>
-      <li class="nav-item"><%= link_to "回答受付中", user_path(user), class: "nav-link" %></li>
-      <li class="nav-item"><%= link_to "回答締め切り", closed_posts_path(user), class: "nav-link active" %></li>
-    <% end %>
-  </ul>
-  <%= render 'posts/posts', user: user, posts: posts %>
+  <div class="card posts-card">
+    <div class="card-header bg-white border-0 pb-0">
+      <ul class="nav nav-tabs nav-fill tabs-compact">
+        <% case controller.action_name %>
+        <% when "show" %>
+          <li class="nav-item"><%= link_to "回答受付中", user_path(user), class: "nav-link active" %></li>
+          <li class="nav-item"><%= link_to "回答締め切り", closed_posts_path(user), class: "nav-link" %></li>
+        <% when "closed" %>
+          <li class="nav-item"><%= link_to "回答受付中", user_path(user), class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "回答締め切り", closed_posts_path(user), class: "nav-link active" %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="card-body">
+      <%= render 'posts/posts', user: user, posts: posts, cardless: true %>
+    </div>
+  </div>
 </div>
