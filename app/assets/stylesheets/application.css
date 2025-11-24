@@ -29,6 +29,7 @@ body {
   background-image: url("back.jpg");
   padding-bottom: 3rem;
   padding-top: 32px;
+  min-height: calc(100vh - 72px);
 }
 
 .card {
