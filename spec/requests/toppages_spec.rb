@@ -23,7 +23,7 @@ RSpec.describe "Toppages", type: :request do
       it "shows only others' open posts" do
         sign_in user
         get root_path
-        expect(response.body).to include "other openpost"
+        expect(response.body).to include "other user question"
         expect(response.body).not_to include "openpost"
         expect(response.body).not_to include "closedpost"
       end
@@ -42,7 +42,7 @@ RSpec.describe "Toppages", type: :request do
       end
 
       it "has only others' open posts" do
-        expect(response.body).to include "other openpost"
+        expect(response.body).to include "other user question"
         expect(response.body).not_to include "openpost"
         expect(response.body).not_to include "closedpost"
       end

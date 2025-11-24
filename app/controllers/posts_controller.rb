@@ -82,7 +82,8 @@ class PostsController < ApplicationController
   end
 
   def ogp_crawler?
-    ua = request.user_agent.to_s.downcase
+    user_agent = request.headers['HTTP_USER_AGENT'].presence || request.user_agent.to_s
+    ua = user_agent.downcase
     ua.match?(/twitterbot|twitter|xbot|x-bot|facebookexternalhit|line-poker|line|slackbot|discordbot/)
   end
 
