@@ -1,6 +1,6 @@
-<% share_text = "#{post.user.username}さんが質問を募集しています。匿名で回答してください #Quester" %>
+<% share_text = "#{post.user.username}さんの質問です #MyQuestion" %>
 <div class="d-flex flex-wrap justify-content-center gap-2">
-  <%= link_to 'Xで共有', "https://x.com/intent/post?text=#{ERB::Util.url_encode(share_text)}&url=#{CGI.escape(request.original_url)}",
+  <%= link_to 'Xで共有', "https://twitter.com/intent/tweet?text=#{ERB::Util.url_encode(share_text)}&url=#{CGI.escape(request.original_url)}",
       class: "btn btn-ghost px-4 py-2", target: "_blank", rel: "noopener", data: { turbo: false } %>
 
   <%= form_with(model: [user, post], local: true, class: "m-0") do |f| %>
