@@ -29,18 +29,22 @@
     counter.style.color = count > MAX_CHARS ? "red" : "black";
   }
 
-  function bindCounters() {
+  function bindCountersOnce() {
     var areas = document.querySelectorAll(".js-text");
     areas.forEach(function (area) {
       updateCounter(area);
-      ["keyup", "input", "change"].forEach(function (ev) {
-        area.addEventListener(ev, function () {
-          updateCounter(area);
-        });
-      });
     });
   }
 
-  document.addEventListener("DOMContentLoaded", bindCounters);
-  document.addEventListener("turbolinks:load", bindCounters);
+  ["DOMContentLoaded", "turbolinks:load", "turbolinks:render"].forEach(function (ev) {
+    document.addEventListener(ev, bindCountersOnce);
+  });
+
+  ["input", "change", "keyup"].forEach(function (ev) {
+    document.addEventListener(ev, function (e) {
+      if (e.target && e.target.classList && e.target.classList.contains("js-text")) {
+        updateCounter(e.target);
+      }
+    });
+  });
 })();
