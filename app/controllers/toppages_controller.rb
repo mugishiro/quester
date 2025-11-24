@@ -31,6 +31,8 @@ class ToppagesController < ApplicationController
   private
 
   def open_posts_for_feed
+    return Post.none unless current_user
+
     Post.includes(:user)
         .where(status: true)
         .where.not(user_id: current_user.id)

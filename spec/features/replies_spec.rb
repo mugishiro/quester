@@ -6,6 +6,7 @@ RSpec.feature "Replies", type: :feature do
 
   describe "create a new reply" do
     before do
+      sign_in user
       visit user_post_path user.nickname, post.id
     end
 
