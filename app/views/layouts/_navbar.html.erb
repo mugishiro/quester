@@ -1,6 +1,6 @@
 <ul class="nav navbar-top justify-content-center align-items-center py-3">
   <li class="nav-item mr-4">
-    <%= link_to(user_signed_in? ? toppages_show_path : root_path, class: "navbar-brand font-weight-bold text-dark d-inline-flex align-items-center") do %>
+    <%= link_to(guide_path, class: "navbar-brand font-weight-bold text-dark d-inline-flex align-items-center") do %>
       <%= image_tag asset_path('favicon.png'), size: "24x24", class: "mr-2" %>
       Quester
     <% end %>
@@ -8,6 +8,9 @@
   <% if user_signed_in? %>
     <li class="nav-item">
       <%= link_to 'マイページ', user_path(current_user), class: "nav-link px-3" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to 'みんなの質問', toppages_show_path, class: "nav-link px-3" %>
     </li>
     <li class="nav-item">
       <%= link_to 'アカウント設定', toppages_edit_path, class: "nav-link px-3" %>

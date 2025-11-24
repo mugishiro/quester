@@ -36,6 +36,9 @@
       </div>
     </div>
   <% end %>
+  <div class="text-right mb-3">
+    <%= link_to "#{@user.username}さんのページへ", user_path(@user), class: "text-muted small" %>
+  </div>
 
   <div class="reply">
     <div class="text-center">

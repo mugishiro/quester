@@ -137,6 +137,10 @@ a {
   height: auto;
 }
 
+html {
+  overflow-y: scroll;
+}
+
 @media (max-width: 576px) {
   .content-wrapper {
     padding-left: 0.75rem;

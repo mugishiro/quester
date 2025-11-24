@@ -6,6 +6,8 @@ class ToppagesController < ApplicationController
       @post = current_user.posts.build
       @open_posts = Post.includes(:user).where(status: true).order(id: :desc).page(params[:page])
       render :action => "show"
+    else
+      render :index
     end
   end
 
@@ -20,5 +22,9 @@ class ToppagesController < ApplicationController
   end
 
   def edit
+  end
+
+  def guide
+    render :index
   end
 end

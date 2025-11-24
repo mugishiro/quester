@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'toppages/show'
   get 'toppages/follows'
   get 'toppages/edit'
+  get 'toppages/guide', as: :guide
 
   devise_for :users, only: [:omniauth_callbacks],
                      controllers: { omniauth_callbacks: "omniauth_callbacks" }
