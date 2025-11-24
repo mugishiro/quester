@@ -1,0 +1,71 @@
+name: Dependency Patch
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 3 * * 1"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  bundle-patch:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        ports:
+          - 3306:3306
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+          MYSQL_ROOT_PASSWORD: ""
+        options: >-
+          --health-cmd="mysqladmin ping -h localhost"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
+    env:
+      RAILS_ENV: test
+      DB_USERNAME: root
+      DB_PASSWORD: ""
+      DB_HOST: 127.0.0.1
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1
+          bundler-cache: true
+
+      - name: Install system dependencies
+        run: sudo apt-get update && sudo apt-get install -y libmysqlclient-dev imagemagick
+
+      - name: Update dependencies (patch)
+        run: bundle update --patch
+
+      - name: Prepare database
+        run: bundle exec rails db:create db:schema:load
+
+      - name: Run tests
+        run: bundle exec rspec
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: bundle update --patch"
+          branch: chore/bundle-update-patch
+          title: "chore: bundle update --patch"
+          body: |
+            Automated patch-level dependency update.
+            
+            - Ran `bundle update --patch`
+            - Ran test suite (`bundle exec rspec`)
+          labels: |
+            dependencies
+            automated
