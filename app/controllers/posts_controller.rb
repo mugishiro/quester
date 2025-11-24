@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :require_user_logged_in, only: [:new, :confirm_new, :create, :update, :destroy]
+  before_action :require_user_logged_in, only: [:show, :new, :confirm_new, :create, :update, :destroy]
   before_action :correct_user, only: [:new, :confirm_new, :create, :update, :destroy]
 
   def show
