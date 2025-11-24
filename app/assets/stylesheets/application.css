@@ -189,6 +189,10 @@ html {
   border-radius: 999px;
   box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
   z-index: 30;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .floating-cta__icon {
@@ -202,14 +206,10 @@ html {
   font-size: 0.95rem;
 }
 
-.floating-cta {
-  display: inline-flex;
-}
-
-@media (max-width: 768px) {
-  .floating-cta {
-    display: inline-flex;
-  }
+.floating-cta.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 .post-author-link {
   display: inline-flex;
