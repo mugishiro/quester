@@ -7,7 +7,7 @@ RSpec.feature "Posts", type: :feature do
   describe "user creates a new post" do
     before do
       sign_in user
-      visit toppages_show_path
+      visit new_user_post_path(user.nickname)
     end
 
     context "with valid attributes" do

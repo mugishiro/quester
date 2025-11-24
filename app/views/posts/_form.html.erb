@@ -4,7 +4,7 @@
       <%= f.text_area :content, class: 'form-control js-text', rows: 8, maxlength: 1000, style: "resize: none;" %>
       <div class="form-footer d-flex align-items-center justify-content-end mt-2">
         <span class="js-text-count text-muted small mr-2"></span>
-        <%= f.submit '質問する', class: 'btn btn-info px-4 py-2' %>
+        <%= f.submit '質問する', class: 'btn btn-info px-4 py-2', aria: { label: 'commit' } %>
       </div>
     </div>
   <% end %>
