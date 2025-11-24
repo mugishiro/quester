@@ -8,8 +8,8 @@ module ApplicationHelper
     favicon_shortcut = ActionController::Base.helpers.asset_path('favicon.png')
 
     {
-      site: nil,
-      title: title,
+      site: 'Quester',
+      title: 'Quester',
       description: description,
       charset: 'utf-8',
       canonical: current_url,

@@ -1,6 +1,6 @@
 <div class="d-flex flex-wrap justify-content-center gap-2">
   <%= link_to 'Xで共有', "https://x.com/intent/post?text=#{ERB::Util.url_encode("#{post.user.username}さんの質問です #MyQuestion")}&url=#{CGI.escape(request.original_url)}",
-      class: "btn btn-solid-primary px-4 py-2", target: "_blank", rel: "noopener", data: { turbo: false } %>
+      class: "btn btn-ghost px-4 py-2", target: "_blank", rel: "noopener", data: { turbo: false } %>
 
   <%= form_with(model: [user, post], local: true, class: "m-0") do |f| %>
     <% if post.status %>
