@@ -16,7 +16,6 @@ yarn install --check-files
 rails db:create db:schema:load
 rails s
 ```
-環境変数（X APIキーなど）は `config/credentials.yml.enc` または Render の環境変数で設定してください。
 
 ## テスト
 ```bash

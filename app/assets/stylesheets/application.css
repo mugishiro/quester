@@ -123,6 +123,16 @@ a {
   padding-bottom: 0.3rem;
 }
 
+.navbar-links {
+  gap: 0.35rem;
+}
+
+.avatar-thumb {
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+}
+
 .header-sticky {
   position: sticky;
   top: 0;
@@ -187,9 +197,9 @@ html {
 
   .navbar-top .nav-link,
   .navbar-top .btn {
-    font-size: 0.88rem;
-    padding-top: 0.18rem;
-    padding-bottom: 0.18rem;
+    font-size: 0.9rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
   }
 
   .card {
