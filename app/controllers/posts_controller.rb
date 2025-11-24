@@ -82,9 +82,14 @@ class PostsController < ApplicationController
   end
 
   def ogp_crawler?
-    user_agent = request.headers['HTTP_USER_AGENT'].presence ||
-                 request.headers['User-Agent'].presence ||
-                 request.user_agent.to_s
+    user_agent = [
+      request.headers['HTTP_USER_AGENT'],
+      request.headers['User-Agent'],
+      request.env['HTTP_USER_AGENT'],
+      request.env['User-Agent'],
+      request.user_agent
+    ].compact.find(&:present?) || ""
+
     ua = user_agent.downcase
     return true if Rails.env.test? && ua.present? # テスト環境ではbot UAを確実に許可
 
