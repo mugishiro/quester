@@ -83,7 +83,7 @@ class PostsController < ApplicationController
 
   def ogp_crawler?
     ua = request.user_agent.to_s.downcase
-    ua.match?(/twitterbot|facebookexternalhit|line-poker|slackbot|discordbot/)
+    ua.match?(/twitterbot|xbot|x-bot|facebookexternalhit|line-poker|slackbot|discordbot/)
   end
 
   def post_params
