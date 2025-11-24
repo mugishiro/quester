@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_action :require_user_logged_in, only: [:show, :new, :confirm_new, :create, :update, :destroy]
+  before_action :require_user_logged_in, only: [:new, :confirm_new, :create, :update, :destroy]
+  before_action :authorize_show, only: [:show]
   before_action :correct_user, only: [:new, :confirm_new, :create, :update, :destroy]
 
   def show
@@ -71,6 +72,19 @@ class PostsController < ApplicationController
   end
 
   private
+
+  # OGPクローラには閲覧を許可し、それ以外の未ログインアクセスは拒否する
+  def authorize_show
+    return if user_signed_in?
+    return if ogp_crawler?
+
+    redirect_to root_url
+  end
+
+  def ogp_crawler?
+    ua = request.user_agent.to_s.downcase
+    ua.match?(/twitterbot|facebookexternalhit|line-poker|slackbot|discordbot/)
+  end
 
   def post_params
     params.require(:post).permit(:content)

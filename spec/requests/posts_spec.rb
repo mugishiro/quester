@@ -30,6 +30,19 @@ RSpec.describe "Posts", type: :request do
         expect(response).to redirect_to root_url
       end
     end
+
+    context "as an OGP crawler (Twitterbot)" do
+      it "responds successfully and exposes social meta tags" do
+        test_post.image.attach(io: File.open(Rails.root.join('app/assets/images/default.png')), filename: 'default.png', content_type: 'image/png')
+
+        get user_post_path user.nickname, test_post.id, headers: { 'HTTP_USER_AGENT' => 'Twitterbot/1.0' }
+
+        image_url = test_post.image_url(host: 'http://www.example.com')
+        expect(response.status).to eq 200
+        expect(response.body).to include(%(property="og:image" content="#{image_url}"))
+        expect(response.body).to include(%(name="twitter:image" content="#{image_url}"))
+      end
+    end
   end
 
   describe "POST #confirm_new" do
