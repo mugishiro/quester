@@ -146,6 +146,7 @@ html {
   align-items: center;
   gap: 0.35rem;
   font-weight: 600;
+  font-size: 1rem;
 }
 
 @media (max-width: 576px) {
@@ -155,8 +156,10 @@ html {
   }
 
   .navbar-top {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
   }
 
   .card {
