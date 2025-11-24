@@ -9,9 +9,6 @@
       <%= link_to 'トップページ', toppages_show_path, class: "nav-link px-3 #{'active' if current_page?(toppages_show_path)}" %>
     </li>
     <li class="nav-item">
-      <%= link_to '友だち', toppages_follows_path, class: "nav-link px-3 #{'active' if current_page?(toppages_follows_path)}" %>
-    </li>
-    <li class="nav-item">
       <%= link_to '自分', user_path(current_user), class: "nav-link px-3" %>
     </li>
     <li class="nav-item">

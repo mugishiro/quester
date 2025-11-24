@@ -8,7 +8,7 @@
     <h1>過去の質問</h1>
     <p><%= user.username %>さんの質問です</p>
   </div>
-  <ul class="nav nav-tabs nav-fill">
+  <ul class="nav nav-tabs nav-fill tabs-compact">
     <% case controller.action_name %>
     <% when "show" %>
       <li class="nav-item"><%= link_to "回答受付中", user_path(user), class: "nav-link active" %></li>

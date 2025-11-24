@@ -15,7 +15,8 @@ class ToppagesController < ApplicationController
   end
 
   def follows
-    @friends = current_user.registered_following_users
+    flash[:alert] = "現在、友だち一覧はご利用いただけません。"
+    redirect_to toppages_show_path
   end
 
   def edit

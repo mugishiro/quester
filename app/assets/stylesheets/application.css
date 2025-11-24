@@ -81,3 +81,17 @@ a {
   background-color: #d4edda;
   border-color: #c3e6cb;
 }
+
+.tabs-compact {
+  margin-bottom: 0;
+}
+
+.tabs-compact .nav-link {
+  border-radius: 0;
+}
+
+.tabs-compact + .posts-card {
+  margin-top: -1px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
