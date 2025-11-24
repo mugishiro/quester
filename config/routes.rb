@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     delete 'registration' => 'devise/registrations#destroy', as: :registration
   end
   resources :users, only: [:show], param: :nickname do
-    resources :posts, only: [:show, :create, :update, :destroy] do
+    resources :posts, only: [:show, :new, :create, :update, :destroy] do
       post :confirm, action: :confirm_new, on: :new
     end
   end

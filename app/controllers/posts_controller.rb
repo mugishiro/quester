@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
-  before_action :require_user_logged_in, only: [:confirm_new, :create, :update, :destroy]
-  before_action :correct_user, only: [:confirm_new, :create, :update, :destroy]
-  before_action :require_user_logged_in, only: [:new]
+  before_action :require_user_logged_in, only: [:new, :confirm_new, :create, :update, :destroy]
+  before_action :correct_user, only: [:new, :confirm_new, :create, :update, :destroy]
 
   def show
     @post = Post.find(params[:id])
