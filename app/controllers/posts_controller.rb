@@ -83,6 +83,8 @@ class PostsController < ApplicationController
 
   def ogp_crawler?
     user_agent = [
+      request.get_header('HTTP_USER_AGENT'),
+      request.get_header('User-Agent'),
       request.headers['HTTP_USER_AGENT'],
       request.headers['User-Agent'],
       request.env['HTTP_USER_AGENT'],

@@ -8,7 +8,7 @@ module PostsHelper
 
   class << self
     def build(text)
-      text = prepare_text(text)
+      text = prepare_text(text.to_s)
       @image = MiniMagick::Image.open(BASE_IMAGE_PATH)
       configuration(text)
     end
