@@ -1,4 +1,4 @@
-<% share_image = @post.image_url(host: request.base_url) || image_url('default.png') %>
+<% share_image = @post.image.attached? ? rails_blob_url(@post.image, host: request.base_url) : image_url('default.png') %>
 <% set_meta_tags og: {
     title: "#{@user.username}@Quester",
     description: "#{@user.username}さんの質問です。「#{@post.content}」",
