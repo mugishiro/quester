@@ -88,6 +88,8 @@ a {
 
 .posts-card .card-header {
   border-bottom: 0;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
 }
 
 .posts-card .posts-list ul {
@@ -103,6 +105,7 @@ a {
   margin-top: 0;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
+  overflow: hidden;
 }
 
 .navbar-top {
