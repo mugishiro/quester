@@ -201,9 +201,13 @@ html {
   font-size: 0.95rem;
 }
 
-@media (min-width: 769px) {
+.floating-cta {
+  display: inline-flex;
+}
+
+@media (max-width: 768px) {
   .floating-cta {
-    display: none;
+    display: inline-flex;
   }
 }
 .post-author-link {
