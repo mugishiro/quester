@@ -8,8 +8,9 @@ module ApplicationHelper
     favicon_shortcut = ActionController::Base.helpers.asset_path('favicon.png')
 
     {
-      site: 'Quester',
-      title: 'Quester',
+      site: nil, # ページタイトルを「Quester」に単体で表示するためサイト名との連結を避ける
+      title: title,
+      reverse: false,
       description: description,
       charset: 'utf-8',
       canonical: current_url,
@@ -18,6 +19,7 @@ module ApplicationHelper
         { href: favicon_shortcut, rel: 'shortcut icon', type: 'image/png' },
       ],
       og: {
+        site_name: 'Quester',
         type: 'website',
         title: title,
         description: description,
