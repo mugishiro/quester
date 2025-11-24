@@ -1,0 +1,75 @@
+name: Rails Upgrade
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  upgrade-rails:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        ports:
+          - 3306:3306
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+          MYSQL_ROOT_PASSWORD: ""
+        options: >-
+          --health-cmd="mysqladmin ping -h localhost"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
+    env:
+      RAILS_ENV: test
+      DB_USERNAME: root
+      DB_PASSWORD: ""
+      DB_HOST: 127.0.0.1
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1
+          bundler-cache: true
+
+      - name: Install system dependencies
+        run: sudo apt-get update && sudo apt-get install -y libmysqlclient-dev imagemagick
+
+      - name: Bump Rails requirement
+        run: |
+          ruby -pi -e "gsub(/gem 'rails'.*$/, \"gem 'rails', '~> 7.1.5', '>= 7.1.5.2'\")" Gemfile
+
+      - name: Bundle update rails
+        run: bundle update rails
+
+      - name: Prepare database
+        run: bundle exec rails db:create db:schema:load
+
+      - name: Run tests
+        run: bundle exec rspec
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: upgrade Rails to ~> 7.1.5"
+          branch: chore/rails-7-1-upgrade
+          title: "chore: upgrade Rails to ~> 7.1.5"
+          body: |
+            Automated Rails upgrade to address security advisories.
+
+            - Updated Gemfile to require Rails ~> 7.1.5 (>= 7.1.5.2)
+            - Ran `bundle update rails`
+            - Ran `bundle exec rspec`
+          labels: |
+            dependencies
+            security
+            automated
