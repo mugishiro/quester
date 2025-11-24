@@ -1,8 +1,10 @@
 <div class="signup my-5">
   <div class="text-center">
     <h3>Questerは、匿名での回答を募集できるサービスです。</h3>
-    <%= link_to "Xで登録/ログイン", user_twitter_omniauth_authorize_path,
-        method: :post, class: "btn btn-primary btn-block py-3 mt-5", data: { turbo: false } %>
+    <% unless user_signed_in? %>
+      <%= link_to "Xで登録/ログイン", user_twitter_omniauth_authorize_path,
+          method: :post, class: "btn btn-primary btn-block py-3 mt-5", data: { turbo: false } %>
+    <% end %>
   </div>
 </div>
 <div class="description my-5">

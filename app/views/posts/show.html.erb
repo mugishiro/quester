@@ -29,15 +29,20 @@
           <%= link_to image_tag(avatar_url(@user), size: "80x80", class: "rounded-circle mr-3", loading: "lazy"),
               user_path(@user) %>
           <div class="media-body">
-            <h5><%= @user.username %></h5>
+            <div class="d-flex align-items-center justify-content-between">
+              <h5 class="mb-1"><%= @user.username %></h5>
+              <%= link_to @user.url, target: "_blank", rel: "noopener", class: "text-muted" do %>
+                <i class="fab fa-twitter"></i>
+              <% end %>
+            </div>
             <p><%= simple_format(h(@post.content)) %></p>
           </div>
         </div>
       </div>
     </div>
   <% end %>
-  <div class="text-right mb-3">
-    <%= link_to "#{@user.username}さんのページへ", user_path(@user), class: "text-muted small" %>
+  <div class="d-flex justify-content-end mb-3">
+    <%= link_to "#{@user.username}さんのページへ", user_path(@user), class: "post-author-link text-muted" %>
   </div>
 
   <div class="reply">
