@@ -11,7 +11,8 @@ class User < ApplicationRecord
 
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first_or_initialize
-    user.email ||= User.dummy_email(auth)
+    # Twitterはemailを返さないことが多く、空文字の既存レコードだとpresenceバリデーションに失敗するため上書きする
+    user.email = User.dummy_email(auth) if user.email.blank?
     user.username = auth.info.name if auth.info.name.present?
     user.nickname = auth.info.nickname if auth.info.nickname.present?
     user.image_url = auth.info.image if auth.info.image.present?
