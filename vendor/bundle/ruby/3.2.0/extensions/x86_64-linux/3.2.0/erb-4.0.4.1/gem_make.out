@@ -1,0 +1,18 @@
+current directory: /home/runner/work/quester/quester/vendor/bundle/ruby/3.2.0/gems/erb-4.0.4.1/ext/erb/escape
+/opt/hostedtoolcache/Ruby/3.2.11/x64/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/runner/work/quester/quester/vendor/bundle/ruby/3.2.0/gems/erb-4.0.4.1/ext/erb/escape
+make DESTDIR\= sitearchdir\=./.gem.20261005-4024-dp32rf sitelibdir\=./.gem.20261005-4024-dp32rf clean
+
+current directory: /home/runner/work/quester/quester/vendor/bundle/ruby/3.2.0/gems/erb-4.0.4.1/ext/erb/escape
+make DESTDIR\= sitearchdir\=./.gem.20261005-4024-dp32rf sitelibdir\=./.gem.20261005-4024-dp32rf
+compiling escape.c
+linking shared-object erb/escape.so
+
+current directory: /home/runner/work/quester/quester/vendor/bundle/ruby/3.2.0/gems/erb-4.0.4.1/ext/erb/escape
+make DESTDIR\= sitearchdir\=./.gem.20261005-4024-dp32rf sitelibdir\=./.gem.20261005-4024-dp32rf install
+/usr/bin/install -c -m 0755 escape.so ./.gem.20261005-4024-dp32rf/erb
+
+current directory: /home/runner/work/quester/quester/vendor/bundle/ruby/3.2.0/gems/erb-4.0.4.1/ext/erb/escape
+make DESTDIR\= sitearchdir\=./.gem.20261005-4024-dp32rf sitelibdir\=./.gem.20261005-4024-dp32rf clean
