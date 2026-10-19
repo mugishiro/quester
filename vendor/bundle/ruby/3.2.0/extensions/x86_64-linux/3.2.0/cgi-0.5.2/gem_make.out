@@ -1,0 +1,18 @@
+current directory: /home/runner/work/quester/quester/vendor/bundle/ruby/3.2.0/gems/cgi-0.5.2/ext/cgi/escape
+/opt/hostedtoolcache/Ruby/3.2.11/x64/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /home/runner/work/quester/quester/vendor/bundle/ruby/3.2.0/gems/cgi-0.5.2/ext/cgi/escape
+make DESTDIR\= sitearchdir\=./.gem.20261019-3999-f4077i sitelibdir\=./.gem.20261019-3999-f4077i clean
+
+current directory: /home/runner/work/quester/quester/vendor/bundle/ruby/3.2.0/gems/cgi-0.5.2/ext/cgi/escape
+make DESTDIR\= sitearchdir\=./.gem.20261019-3999-f4077i sitelibdir\=./.gem.20261019-3999-f4077i
+compiling escape.c
+linking shared-object cgi/escape.so
+
+current directory: /home/runner/work/quester/quester/vendor/bundle/ruby/3.2.0/gems/cgi-0.5.2/ext/cgi/escape
+make DESTDIR\= sitearchdir\=./.gem.20261019-3999-f4077i sitelibdir\=./.gem.20261019-3999-f4077i install
+/usr/bin/install -c -m 0755 escape.so ./.gem.20261019-3999-f4077i/cgi
+
+current directory: /home/runner/work/quester/quester/vendor/bundle/ruby/3.2.0/gems/cgi-0.5.2/ext/cgi/escape
+make DESTDIR\= sitearchdir\=./.gem.20261019-3999-f4077i sitelibdir\=./.gem.20261019-3999-f4077i clean
